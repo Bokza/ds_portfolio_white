@@ -88,10 +88,13 @@
   ].join('');
   document.head.appendChild(style);
 
-  /* Light overlay — prevents flash of unstyled layout */
+  /* ① 오버레이를 먼저 붙이고 ② pf-init 제거 → 한 프레임에 같이 반영됨 */
   var overlay = document.createElement('div');
   overlay.style.cssText = 'position:fixed;inset:0;background:#EEF2F7;z-index:99999;transition:opacity .3s ease;';
   document.body.appendChild(overlay);
+  /* head의 html{opacity:0} 규칙 제거 — 오버레이가 이미 커버하고 있으므로 플래시 없음 */
+  var _pi = document.getElementById('pf-init');
+  if (_pi) _pi.parentNode.removeChild(_pi);
 
   /* ── SYNC: preconnect to CDN domains ───────────────── */
   ['https://fonts.googleapis.com','https://fonts.gstatic.com',
@@ -253,6 +256,13 @@
   function buildStaggerGroups(slideEl) {
     var els = Array.from(slideEl.querySelectorAll('[data-object="true"]'));
     if (els.length === 0) return [];
+
+    /* 배경 장식 요소(blur orb 등) 제외 — shape + z-index ≤ 2 */
+    els = els.filter(function (el) {
+      var type   = el.getAttribute('data-object-type') || '';
+      var zIndex = parseInt(el.style.zIndex) || 0;
+      return !(type === 'shape' && zIndex <= 2);
+    });
 
     /* top 값 기준 정렬 */
     els.sort(function (a, b) {
