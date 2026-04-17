@@ -82,9 +82,9 @@
     '.pf-exit-l{animation:pfExL .22s cubic-bezier(.4,0,.2,1) both}',
     '.pf-exit-r{animation:pfExR .22s cubic-bezier(.4,0,.2,1) both}',
 
-    /* Content animations */
-    '@keyframes pfFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}',
-    '._pf-up{animation:pfFadeUp .5s cubic-bezier(.4,0,.2,1) both}'
+    /* 첫 로드용 페이드업 (방향 정보 없을 때) */
+    '@keyframes pfEnFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}',
+    '.pf-enter-fade{animation:pfEnFade .45s cubic-bezier(.4,0,.2,1) both}'
   ].join('');
   document.head.appendChild(style);
 
@@ -190,8 +190,9 @@
     /* ── Enter animation ──────────────────────────────── */
     var dir = sessionStorage.getItem('pf_dir');
     sessionStorage.removeItem('pf_dir');
-    if (dir === 'next')  canvas.classList.add('pf-enter-r');
-    else if (dir === 'prev') canvas.classList.add('pf-enter-l');
+    if (dir === 'next')       canvas.classList.add('pf-enter-r');
+    else if (dir === 'prev')  canvas.classList.add('pf-enter-l');
+    else                      canvas.classList.add('pf-enter-fade'); // 직접 접근·새로고침
 
     /* ── Scale to viewport ────────────────────────────── */
     function applyScale() {
@@ -234,33 +235,78 @@
       if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   navigateTo(idx - 1, -1);
     });
 
-    /* ── Reveal & content animations ─────────────────── */
+    /* ── 오버레이가 덮고 있는 동안 콘텐츠 요소를 미리 숨김 ── */
+    /* → 오버레이 제거 후 요소가 이미 보이는 "스포" 현상 방지 */
+    var contentEls = buildStaggerGroups(slideEl);
+
+    /* ── 오버레이 페이드와 동시에 애니메이션 시작 ───────── */
     setTimeout(function () {
-      overlay.style.opacity = '0';
-      setTimeout(function () {
-        overlay.remove();
-        triggerContentAnimations();
-      }, 360);
-    }, 60);
+      overlay.style.opacity = '0';         /* 오버레이 퇴장 시작 */
+      triggerStaggerAnimations(contentEls); /* 동시에 콘텐츠 등장 */
+      triggerCountUp();                     /* 숫자 카운트업 */
+      setTimeout(function () { overlay.remove(); }, 380);
+    }, 80);
   });
 
-  /* ── Number countUp ─────────────────────────────────── */
-  function countUp(el, target, suffix, duration) {
-    var isInt = (target === Math.floor(target));
-    var t0 = performance.now();
-    function tick(now) {
-      var p    = Math.min((now - t0) / duration, 1);
-      var ease = 1 - Math.pow(1 - p, 3);
-      var val  = target * ease;
-      el.textContent = (isInt ? Math.round(val).toLocaleString() : val.toFixed(1)) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+  /* ── ① 콘텐츠 요소 수집 및 즉시 숨김 (오버레이 아래) ── */
+  /* 모든 페이지 공통 data-object="true" 요소를 세로 위치 기준으로 그룹화 */
+  function buildStaggerGroups(slideEl) {
+    var els = Array.from(slideEl.querySelectorAll('[data-object="true"]'));
+    if (els.length === 0) return [];
+
+    /* top 값 기준 정렬 */
+    els.sort(function (a, b) {
+      return (parseInt(a.style.top) || 0) - (parseInt(b.style.top) || 0);
+    });
+
+    /* 세로 50px 이내는 같은 그룹 (동시 등장) */
+    var groups = [];
+    var group  = [];
+    var lastTop = -9999;
+    els.forEach(function (el) {
+      var top = parseInt(el.style.top) || 0;
+      if (top - lastTop > 50) {
+        if (group.length) groups.push(group);
+        group   = [el];
+        lastTop = top;
+      } else {
+        group.push(el);
+      }
+    });
+    if (group.length) groups.push(group);
+
+    /* 오버레이가 덮고 있는 동안 즉시 숨김 → 스포 방지 */
+    els.forEach(function (el) {
+      el.style.opacity   = '0';
+      el.style.transform = 'translateY(14px)';
+      el.style.transition = 'none';
+    });
+
+    return groups;
   }
 
-  /* ── Per-page content animations ───────────────────── */
-  function triggerContentAnimations() {
-    /* ① Number countUp */
+  /* ── ② 오버레이와 동시에 그룹별 순차 등장 ─────────────── */
+  function triggerStaggerAnimations(groups) {
+    if (!groups || groups.length === 0) return;
+    groups.forEach(function (group, gi) {
+      var delay = gi * 70; /* 그룹 간 70ms 간격 */
+      group.forEach(function (el) {
+        el.style.transition =
+          'opacity .5s ease ' + delay + 'ms,' +
+          'transform .5s cubic-bezier(.4,0,.2,1) ' + delay + 'ms';
+        /* 한 프레임 뒤에 목표값 적용 → transition 발동 보장 */
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            el.style.opacity   = '1';
+            el.style.transform = 'translateY(0)';
+          });
+        });
+      });
+    });
+  }
+
+  /* ── ③ 숫자 카운트업 ─────────────────────────────────── */
+  function triggerCountUp() {
     ['.stat-value', '.metric-value', '.number-value'].forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (el) {
         if (el.dataset.pfCounted) return;
@@ -270,39 +316,16 @@
         var raw = parseFloat(match[1].replace(/,/g, ''));
         if (isNaN(raw) || raw <= 0) return;
         el.dataset.pfCounted = '1';
-        countUp(el, raw, text.slice(match[0].length), 1100);
+        var suffix = text.slice(match[0].length);
+        var isInt  = (raw === Math.floor(raw));
+        var t0     = performance.now();
+        (function tick(now) {
+          var p   = Math.min((now - t0) / 1100, 1);
+          var val = raw * (1 - Math.pow(1 - p, 3));
+          el.textContent = (isInt ? Math.round(val).toLocaleString() : val.toFixed(1)) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        })(performance.now());
       });
-    });
-
-    /* ② Card / section fade-in-up */
-    var delay = 80;
-    [
-      '.project-card', '.timeline-item', '.skill-bar-wrapper',
-      '.metric-card',  '.stat-card',     '.glass-panel'
-    ].forEach(function (sel) {
-      document.querySelectorAll(sel).forEach(function (el) {
-        if (el.dataset.pfFaded) return;
-        el.dataset.pfFaded = '1';
-        el.style.opacity = '0';
-        (function (d) {
-          setTimeout(function () {
-            el.style.opacity = '';
-            el.style.animationDelay = d + 'ms';
-            el.classList.add('_pf-up');
-          }, 120);
-        })(delay);
-        delay += 55;
-      });
-    });
-
-    /* ③ Progress bar fill */
-    document.querySelectorAll('[class*="bar-fill"],[class*="progress-fill"]').forEach(function (el) {
-      if (el.dataset.pfBar) return;
-      el.dataset.pfBar = '1';
-      var tw = el.style.width;
-      el.style.width = '0%';
-      el.style.transition = 'width 1s cubic-bezier(.4,0,.2,1)';
-      setTimeout(function () { el.style.width = tw; }, 200);
     });
   }
 
