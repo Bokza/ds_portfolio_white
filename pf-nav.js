@@ -25,58 +25,62 @@
   /* ── SYNC: inject base styles immediately ──────────── */
   var style = document.createElement('style');
   style.textContent = [
-    'body{background:#0B1120!important;}',
+    /* ── 바디 & 쉘 배경: 슬라이드 톤과 동일한 라이트 그레이 ── */
+    'body{background:#EEF2F7!important;}',
 
     /* Shell */
     '.pf-shell{position:fixed;inset:0;display:flex;flex-direction:column;',
-    'align-items:center;justify-content:center;background:#0B1120;',
+    'align-items:center;justify-content:center;background:#EEF2F7;',
     'overflow:hidden;z-index:9000;}',
 
     /* Row */
-    '.pf-row{display:flex;align-items:center;gap:18px;flex-shrink:0;}',
+    '.pf-row{display:flex;align-items:center;gap:20px;flex-shrink:0;}',
 
-    /* Viewport clips the scaled canvas */
-    '.pf-vp{overflow:hidden;flex-shrink:0;border-radius:8px;',
-    'box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);}',
+    /* Viewport — 화이트 슬라이드에 어울리는 부드러운 그림자 */
+    '.pf-vp{overflow:hidden;flex-shrink:0;border-radius:10px;',
+    'box-shadow:0 8px 40px rgba(15,23,42,.12),0 2px 8px rgba(15,23,42,.06),',
+    '0 0 0 1px rgba(203,213,225,.6);}',
 
-    /* Canvas — JS applies scale transform */
+    /* Canvas */
     '.pf-canvas{width:1280px;height:720px;position:relative;',
     'transform-origin:top left;flex-shrink:0;}',
 
-    /* Nav buttons */
-    '.pf-btn{width:46px;height:46px;border-radius:50%;',
-    'background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);',
-    'color:rgba(255,255,255,.75);cursor:pointer;display:flex;',
+    /* Nav buttons: 흰 배경 + 슬레이트 아이콘 */
+    '.pf-btn{width:42px;height:42px;border-radius:50%;',
+    'background:#FFFFFF;border:1px solid #CBD5E1;',
+    'color:#475569;cursor:pointer;display:flex;',
     'align-items:center;justify-content:center;flex-shrink:0;outline:none;',
-    'transition:background .2s,transform .15s,opacity .25s;user-select:none;}',
-    '.pf-btn:hover:not(:disabled){background:rgba(255,255,255,.16);',
-    'border-color:rgba(255,255,255,.3);transform:scale(1.08);}',
+    'box-shadow:0 1px 4px rgba(15,23,42,.08);',
+    'transition:background .18s,border-color .18s,box-shadow .18s,transform .15s,opacity .2s;',
+    'user-select:none;}',
+    '.pf-btn:hover:not(:disabled){background:#F8FAFC;border-color:#94A3B8;',
+    'box-shadow:0 3px 10px rgba(15,23,42,.12);transform:scale(1.07);}',
     '.pf-btn:active:not(:disabled){transform:scale(.93);}',
-    '.pf-btn:disabled{opacity:.18;cursor:not-allowed;}',
+    '.pf-btn:disabled{opacity:.3;cursor:not-allowed;box-shadow:none;}',
 
     /* Bottom row */
-    '.pf-bottom{display:flex;align-items:center;gap:20px;margin-top:13px;flex-shrink:0;}',
-    '.pf-counter{font-size:12px;color:rgba(255,255,255,.3);font-weight:600;',
-    'letter-spacing:.08em;min-width:46px;text-align:right;',
+    '.pf-bottom{display:flex;align-items:center;gap:16px;margin-top:12px;flex-shrink:0;}',
+    '.pf-counter{font-size:12px;color:#94A3B8;font-weight:600;',
+    'letter-spacing:.08em;min-width:42px;text-align:right;',
     "font-family:'Noto Sans KR',sans-serif;}",
 
     /* Dots */
     '.pf-dots{display:flex;gap:6px;align-items:center;}',
     '.pf-dot{width:7px;height:7px;border-radius:4px;',
-    'background:rgba(255,255,255,.22);cursor:pointer;border:none;padding:0;',
+    'background:#CBD5E1;cursor:pointer;border:none;padding:0;',
     'outline:none;transition:width .32s cubic-bezier(.4,0,.2,1),background .28s ease;}',
-    '.pf-dot.active{width:26px;background:#3B82F6;}',
-    '.pf-dot:hover:not(.active){background:rgba(255,255,255,.5);}',
+    '.pf-dot.active{width:26px;background:#2563EB;}',
+    '.pf-dot:hover:not(.active){background:#94A3B8;}',
 
     /* Page transition keyframes */
-    '@keyframes pfEnR{from{opacity:0;transform:translateX(55px)}to{opacity:1;transform:translateX(0)}}',
-    '@keyframes pfEnL{from{opacity:0;transform:translateX(-55px)}to{opacity:1;transform:translateX(0)}}',
-    '@keyframes pfExL{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-65px)}}',
-    '@keyframes pfExR{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(65px)}}',
-    '.pf-enter-r{animation:pfEnR .44s cubic-bezier(.4,0,.2,1) both}',
-    '.pf-enter-l{animation:pfEnL .44s cubic-bezier(.4,0,.2,1) both}',
-    '.pf-exit-l{animation:pfExL .32s cubic-bezier(.4,0,.2,1) both}',
-    '.pf-exit-r{animation:pfExR .32s cubic-bezier(.4,0,.2,1) both}',
+    '@keyframes pfEnR{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:translateX(0)}}',
+    '@keyframes pfEnL{from{opacity:0;transform:translateX(-50px)}to{opacity:1;transform:translateX(0)}}',
+    '@keyframes pfExL{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-60px)}}',
+    '@keyframes pfExR{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(60px)}}',
+    '.pf-enter-r{animation:pfEnR .42s cubic-bezier(.4,0,.2,1) both}',
+    '.pf-enter-l{animation:pfEnL .42s cubic-bezier(.4,0,.2,1) both}',
+    '.pf-exit-l{animation:pfExL .30s cubic-bezier(.4,0,.2,1) both}',
+    '.pf-exit-r{animation:pfExR .30s cubic-bezier(.4,0,.2,1) both}',
 
     /* Content animations */
     '@keyframes pfFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}',
@@ -84,9 +88,9 @@
   ].join('');
   document.head.appendChild(style);
 
-  /* Dark overlay — prevents flash of unstyled layout */
+  /* Light overlay — prevents flash of unstyled layout */
   var overlay = document.createElement('div');
-  overlay.style.cssText = 'position:fixed;inset:0;background:#0B1120;z-index:99999;transition:opacity .35s ease;';
+  overlay.style.cssText = 'position:fixed;inset:0;background:#EEF2F7;z-index:99999;transition:opacity .3s ease;';
   document.body.appendChild(overlay);
 
   /* ── DOM READY: build shell ─────────────────────────── */
