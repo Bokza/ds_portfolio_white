@@ -79,8 +79,8 @@
     '@keyframes pfExR{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(60px)}}',
     '.pf-enter-r{animation:pfEnR .42s cubic-bezier(.4,0,.2,1) both}',
     '.pf-enter-l{animation:pfEnL .42s cubic-bezier(.4,0,.2,1) both}',
-    '.pf-exit-l{animation:pfExL .30s cubic-bezier(.4,0,.2,1) both}',
-    '.pf-exit-r{animation:pfExR .30s cubic-bezier(.4,0,.2,1) both}',
+    '.pf-exit-l{animation:pfExL .22s cubic-bezier(.4,0,.2,1) both}',
+    '.pf-exit-r{animation:pfExR .22s cubic-bezier(.4,0,.2,1) both}',
 
     /* Content animations */
     '@keyframes pfFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}',
@@ -93,12 +93,31 @@
   overlay.style.cssText = 'position:fixed;inset:0;background:#EEF2F7;z-index:99999;transition:opacity .3s ease;';
   document.body.appendChild(overlay);
 
+  /* ── SYNC: preconnect to CDN domains ───────────────── */
+  ['https://fonts.googleapis.com','https://fonts.gstatic.com',
+   'https://cdnjs.cloudflare.com','https://cdn.jsdelivr.net',
+   'https://cdn.tailwindcss.com'].forEach(function (origin) {
+    var l = document.createElement('link');
+    l.rel = 'preconnect'; l.href = origin; l.crossOrigin = '';
+    document.head.appendChild(l);
+  });
+
   /* ── DOM READY: build shell ─────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
     var slideEl = document.querySelector('#slide-container, .slide-container');
     if (!slideEl) { overlay.remove(); return; }
 
     var idx = getCurrentIndex();
+
+    /* ── Prefetch adjacent pages immediately ──────────── */
+    /* 현재 페이지 로드 직후, 앞뒤 + 그 다음 페이지까지 백그라운드 다운로드 */
+    [idx - 1, idx + 1, idx + 2].forEach(function (i) {
+      if (i >= 0 && i < N) {
+        var l = document.createElement('link');
+        l.rel = 'prefetch'; l.as = 'document'; l.href = PAGES[i];
+        document.head.appendChild(l);
+      }
+    });
 
     /* Canvas */
     var canvas = document.createElement('div');
@@ -191,9 +210,20 @@
     /* ── Navigation ───────────────────────────────────── */
     function navigateTo(target, direction) {
       if (target < 0 || target >= N || target === idx) return;
+
+      /* 이동 대상 페이지의 인접 페이지도 미리 prefetch */
+      [target - 1, target + 1].forEach(function (i) {
+        if (i >= 0 && i < N && i !== idx) {
+          var l = document.createElement('link');
+          l.rel = 'prefetch'; l.as = 'document'; l.href = PAGES[i];
+          document.head.appendChild(l);
+        }
+      });
+
       canvas.classList.add(direction > 0 ? 'pf-exit-l' : 'pf-exit-r');
       sessionStorage.setItem('pf_dir', direction > 0 ? 'next' : 'prev');
-      setTimeout(function () { location.href = PAGES[target]; }, 350);
+      /* 애니메이션과 navigation을 거의 동시에 시작 — 체감 대기 최소화 */
+      setTimeout(function () { location.href = PAGES[target]; }, 220);
     }
 
     prevBtn.addEventListener('click', function () { navigateTo(idx - 1, -1); });
