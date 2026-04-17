@@ -84,7 +84,32 @@
 
     /* 첫 로드용 페이드업 (방향 정보 없을 때) */
     '@keyframes pfEnFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}',
-    '.pf-enter-fade{animation:pfEnFade .45s cubic-bezier(.4,0,.2,1) both}'
+    '.pf-enter-fade{animation:pfEnFade .45s cubic-bezier(.4,0,.2,1) both}',
+
+    /* ── 배경 통일: 기존 개별 배경 요소 전부 숨김 ─────────── */
+    /* CSS 클래스 기반 배경 요소 */
+    '.bg-grid,.bg-grid-pattern,.grid-pattern,',
+    '.glow-orb,.glow-blob,',
+    '.glow-accent-1,.glow-accent-2,.glow-accent-3,',
+    '.orb-blue,.orb-purple,.blob-emerald,.blob-gold,.blob-blue{display:none!important;}',
+
+    /* 인라인 blur 장식 shape (p3,p4,p5,p6,p12 blur orbs) */
+    '[data-object-type="shape"][style*="blur("]{display:none!important;}',
+
+    /* 인라인 radial-gradient shape (p3,p7,p9) */
+    '[data-object-type="shape"][style*="radial-gradient"]{display:none!important;}',
+
+    /* SVG 타일 배경 이미지 (p12 cross pattern) */
+    '[data-object-type="image"][style*="pointer-events: none"]{display:none!important;}',
+
+    /* ── 슬라이드 배경: 통일된 F8FAFC + 60px 격자 ─────────── */
+    '#slide-container,.slide-container{background:#F8FAFC!important;}',
+    '#slide-container::before,.slide-container::before{',
+    'content:"";position:absolute;inset:0;pointer-events:none;z-index:0;',
+    'background-image:',
+    'linear-gradient(rgba(148,163,184,.06) 1px,transparent 1px),',
+    'linear-gradient(90deg,rgba(148,163,184,.06) 1px,transparent 1px);',
+    'background-size:60px 60px;}'
   ].join('');
   document.head.appendChild(style);
 
