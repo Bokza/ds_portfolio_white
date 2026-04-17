@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>데이터 사이언스 포트폴리오 커버</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F8FAFC;
+            color: #1E293B;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        #slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+            background-color: #F8FAFC;
+        }
+
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(148, 163, 184, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .glow-accent-1 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 1;
+        }
+
+        .glow-accent-2 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background-color: rgba(16, 185, 129, 0.08);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 1;
+        }
+        
+        .glow-accent-3 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(139, 92, 246, 0.08);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 1;
+        }
+
+        .tag-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background-color: #FFFFFF;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #334155;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body>
+<div id="slide-container">
+<div class="bg-grid" data-object="true" data-object-type="shape" style="position: absolute; left: 0px; top: 0px; width: 1280px; height: 720px;"></div>
+<div class="glow-accent-1" data-object="true" data-object-type="shape" style="position: absolute; left: 780px; top: -200px; width: 600px; height: 600px;"></div>
+<div class="glow-accent-2" data-object="true" data-object-type="shape" style="position: absolute; left: -100px; top: 370px; width: 500px; height: 500px;"></div>
+<div class="glow-accent-3" data-object="true" data-object-type="shape" style="position: absolute; left: 300px; top: 200px; width: 400px; height: 400px;"></div>
+<!-- Header -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 80px; top: 120px; width: 400px; height: 32px; display: flex; align-items: center; gap: 16px; z-index: 10;">
+<div style="background-color: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); color: #2563EB; padding: 4px 14px; border-radius: 6px; font-size: 13px; font-weight: 700; letter-spacing: 1.5px;">PORTFOLIO</div>
+<div style="color: #64748B; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">Updated 2026.03</div>
+</div>
+<!-- Title -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 80px; top: 175px; width: 800px; height: 195px; z-index: 10;">
+<h1 style="font-size: 86px; font-weight: 900; line-height: 1.1; margin: 0; color: #0F172A; letter-spacing: -2px;">데이터 사이언스</h1>
+<h1 style="font-size: 86px; font-weight: 900; line-height: 1.1; margin: 0; color: #2563EB; letter-spacing: -2px;">포트폴리오</h1>
+</div>
+<!-- Separator -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 80px; top: 400px; width: 100px; height: 6px; background-color: #10B981; border-radius: 3px; z-index: 10;"></div>
+<!-- Subtitle -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 80px; top: 440px; width: 850px; height: 80px; z-index: 10;">
+<p style="font-size: 24px; font-weight: 400; color: #475569; line-height: 1.6; margin: 0;">
+        통계적 분석 모델링 역량과 <span style="font-weight: 700; color: #1E293B; border-bottom: 2px solid rgba(16, 185, 129, 0.4);">프로덕션 ML 파이프라인 구축 경험</span>을 결합하여<br/>
+        데이터의 실질적 가치를 창출하는 데이터 사이언티스트
+    </p>
+</div>
+<!-- Badges -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 80px; top: 550px; width: 1100px; height: 50px; display: flex; gap: 16px; align-items: center; flex-wrap: nowrap; z-index: 10;">
+<div class="tag-badge">
+<i class="fa-solid fa-chart-line" style="color: #10B981;"></i>
+<span>Statistical Analysis</span>
+</div>
+<div class="tag-badge">
+<i class="fa-solid fa-bolt" style="color: #F59E0B;"></i>
+<span>Time Series Forecasting</span>
+</div>
+<div class="tag-badge">
+<i class="fa-solid fa-robot" style="color: #8B5CF6;"></i>
+<span>LLM &amp; NLP</span>
+</div>
+<div class="tag-badge">
+<i class="fa-solid fa-server" style="color: #EC4899;"></i>
+<span>MLOps &amp; Engineering</span>
+</div>
+</div>
+<!-- Chart Background Decor -->
+<div data-object="true" data-object-type="chart" id="main-chart" style="position: absolute; left: 680px; top: 220px; width: 600px; height: 380px; z-index: 5;"></div>
+<!-- Footer area -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 80px; top: 640px; width: 1120px; height: 1px; background-color: rgba(203, 213, 225, 0.8); z-index: 10;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 80px; top: 660px; width: 500px; height: 40px; display: flex; align-items: center; gap: 24px; z-index: 10;">
+<p style="font-size: 14px; font-weight: 600; color: #64748B; margin: 0; letter-spacing: 0.5px;">TECH STACK</p>
+<div style="display: flex; gap: 20px; font-size: 24px; color: #475569;">
+<i class="fa-brands fa-python"></i>
+<i class="fa-solid fa-brain"></i>
+<i class="fa-solid fa-database"></i>
+<i class="fa-brands fa-aws"></i>
+<i class="fa-brands fa-docker"></i>
+<i class="fa-solid fa-chart-simple"></i>
+</div>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 800px; top: 665px; width: 400px; height: 20px; text-align: right; z-index: 10;">
+<p style="font-size: 12px; font-weight: 500; color: #94A3B8; margin: 0; letter-spacing: 1px;">CONFIDENTIAL - PORTFOLIO PRESENTATION</p>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const chartDom = document.getElementById('main-chart');
+        const myChart = echarts.init(chartDom);
+        
+        const data1 = [];
+        const data2 = [];
+        
+        let prev1 = 50;
+        let prev2 = 30;
+        
+        for (let i = 0; i <= 100; i++) {
+            const trend1 = Math.sin(i * 0.08) * 25 + Math.sin(i * 0.03) * 15 + 60;
+            const noise1 = (Math.random() * 2 - 1) * 2;
+            prev1 = prev1 * 0.3 + (trend1 + noise1) * 0.7;
+            data1.push([i, prev1]);
+            
+            const trend2 = Math.sin(i * 0.08 - 0.7) * 15 + Math.sin(i * 0.04) * 10 + 40;
+            const noise2 = (Math.random() * 2 - 1) * 1.5;
+            prev2 = prev2 * 0.4 + (trend2 + noise2) * 0.6;
+            data2.push([i, prev2]);
+        }
+
+        const option = {
+            animation: false,
+            grid: {
+                top: 20,
+                bottom: 20,
+                left: 20,
+                right: 20,
+                containLabel: false
+            },
+            xAxis: {
+                type: 'value',
+                show: false,
+                min: 0,
+                max: 100
+            },
+            yAxis: {
+                type: 'value',
+                show: false,
+                min: 0,
+                max: 120
+            },
+            series: [
+                {
+                    type: 'line',
+                    data: data1,
+                    smooth: 0.4,
+                    showSymbol: false,
+                    lineStyle: {
+                        color: '#2563EB',
+                        width: 3,
+                        shadowColor: 'rgba(37, 99, 235, 0.3)',
+                        shadowBlur: 10,
+                        shadowOffsetY: 5
+                    },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: 'rgba(37, 99, 235, 0.15)' },
+                            { offset: 0.8, color: 'rgba(37, 99, 235, 0.02)' },
+                            { offset: 1, color: 'rgba(37, 99, 235, 0.0)' }
+                        ])
+                    },
+                    zlevel: 2
+                },
+                {
+                    type: 'line',
+                    data: data2,
+                    smooth: 0.4,
+                    showSymbol: false,
+                    lineStyle: {
+                        color: '#10B981',
+                        width: 2,
+                        type: 'dashed',
+                        shadowColor: 'rgba(16, 185, 129, 0.2)',
+                        shadowBlur: 5
+                    },
+                    zlevel: 1
+                }
+            ]
+        };
+
+        myChart.setOption(option);
+    });
+</script>
+</body>
+</html>

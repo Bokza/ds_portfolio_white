@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport"/>
+<title>건물 재실 예측 솔루션 상세 - Light Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #FFFFFF;
+            color: #1E293B;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+        }
+        p { margin: 0; padding: 0; }
+        ul { margin: 0; padding: 0; list-style: none; }
+        .highlight-blue { color: #2563EB; font-weight: 700; }
+        .highlight-green { color: #059669; font-weight: 700; }
+        .glass-panel {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Decorative Background Elements -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: -100px; top: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0) 70%); border-radius: 50%; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 800px; top: 400px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(16, 185, 129, 0.04) 0%, rgba(16, 185, 129, 0) 70%); border-radius: 50%; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 1050px; top: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, rgba(139, 92, 246, 0) 70%); border-radius: 50%; z-index: 1;"></div>
+<!-- Header Section -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 40px; width: 1160px; height: 100px; z-index: 10;">
+<div style="display: flex; flex-direction: column; border-bottom: 1px solid #E2E8F0; padding-bottom: 16px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<div style="display: flex; align-items: center; gap: 12px;">
+<span style="width: 8px; height: 8px; background-color: #3B82F6; border-radius: 50%;"></span>
+<span style="font-size: 14px; font-weight: 700; color: #64748B; letter-spacing: 0.15em;">PROJECT 01</span>
+</div>
+<span style="background: #ECFDF5; border: 1px solid #A7F3D0; color: #059669; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.05em;">PRODUCTION</span>
+</div>
+<div style="display: flex; align-items: baseline; gap: 16px;">
+<h1 style="font-size: 40px; font-weight: 800; color: #0F172A; margin: 0; line-height: 1.1; letter-spacing: -0.02em;">건물 재실 예측 솔루션</h1>
+<span style="font-size: 20px; font-weight: 400; color: #64748B; letter-spacing: 0.02em;">Occupancy Assumption Service</span>
+</div>
+</div>
+</div>
+<!-- Left Column: Content -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 160px; width: 540px; height: 130px; z-index: 10;">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+<i class="fa-solid fa-bullseye" style="color: #3B82F6; font-size: 18px;"></i>
+<h3 style="font-size: 20px; font-weight: 700; color: #0F172A; margin: 0;">프로젝트 개요</h3>
+</div>
+<p style="font-size: 16px; line-height: 1.7; color: #475569; font-weight: 400; text-align: justify; padding-right: 10px;">
+        BEMS(건물에너지관리시스템)의 핵심 기능으로, 실시간 전력 사용 패턴과 조명 상태 데이터를 분석하여 현재 공간의 <span class="highlight-blue">재실 여부(Occupancy)</span>와 <span class="highlight-green">밀도</span>를 예측하는 머신러닝 서비스입니다.
+    </p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 310px; width: 540px; height: 280px; z-index: 10;">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+<i class="fa-solid fa-layer-group" style="color: #10B981; font-size: 18px;"></i>
+<h3 style="font-size: 20px; font-weight: 700; color: #0F172A; margin: 0;">주요 역할 및 기술적 접근</h3>
+</div>
+<div style="display: flex; flex-direction: column; gap: 24px;">
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+<span style="color: #3B82F6; font-size: 12px; font-weight: 800;">01</span>
+</div>
+<p style="font-size: 16px; line-height: 1.6; color: #475569;"><strong>듀얼 알고리즘 아키텍처:</strong> 설비 특성에 맞춰 <span style="color:#2563EB; font-weight:600;">HMM</span>(전열 패턴)과 <span style="color:#059669; font-weight:600;">KMeans</span>(전등 ON/OFF) 모델 이원화 설계</p>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+<span style="color: #3B82F6; font-size: 12px; font-weight: 800;">02</span>
+</div>
+<p style="font-size: 16px; line-height: 1.6; color: #475569;"><strong>견고한 전처리 파이프라인:</strong> Hampel Filter 기반 이상치 제거 및 동적 윈도우 결측치 보간 체계 구축</p>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+<span style="color: #3B82F6; font-size: 12px; font-weight: 800;">03</span>
+</div>
+<p style="font-size: 16px; line-height: 1.6; color: #475569;"><strong>모델 서빙 및 운영:</strong> BentoML 기반 REST API 프로덕션 배포 및 Grafana/Prometheus 실시간 모니터링 연동</p>
+</div>
+</div>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 600px; width: 540px; height: 80px; z-index: 10;">
+<div style="font-size: 13px; font-weight: 600; color: #64748B; margin-bottom: 12px; letter-spacing: 0.1em;">TECH STACK</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fab fa-python" style="margin-right: 6px; color:#3B82F6;"></i>Python</span>
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fas fa-project-diagram" style="margin-right: 6px; color:#3B82F6;"></i>HMM / KMeans</span>
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fas fa-cube" style="margin-right: 6px; color:#3B82F6;"></i>BentoML</span>
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fab fa-aws" style="margin-right: 6px; color:#3B82F6;"></i>AWS</span>
+</div>
+</div>
+<!-- Right Column: KPIs & Chart -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 650px; top: 160px; width: 570px; height: 130px; z-index: 10;">
+<div style="display: flex; gap: 16px; height: 100%;">
+<div class="glass-panel" style="flex: 1; padding: 16px 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+<div style="position: absolute; right: -10px; bottom: -10px; color: #CBD5E1; opacity: 0.2;"><i class="fas fa-building" style="font-size: 80px;"></i></div>
+<div style="display: flex; align-items: baseline; gap: 4px;">
+<span style="font-size: 42px; font-weight: 800; color: #0F172A; line-height: 1;">9</span>
+<span style="font-size: 18px; font-weight: 600; color: #64748B;">개</span>
+</div>
+<span style="font-size: 14px; font-weight: 500; color: #64748B; margin-top: 8px;">운영 건물 적용</span>
+</div>
+<div class="glass-panel" style="flex: 1; padding: 16px 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%); border: 1px solid #BAE6FD;">
+<div style="position: absolute; right: -10px; bottom: -10px; color: #93C5FD; opacity: 0.3;"><i class="fas fa-bolt" style="font-size: 80px;"></i></div>
+<div style="display: flex; align-items: baseline; gap: 4px;">
+<span style="font-size: 42px; font-weight: 800; color: #2563EB; line-height: 1;">3~10</span>
+<span style="font-size: 18px; font-weight: 600; color: #3B82F6;">s</span>
+</div>
+<span style="font-size: 14px; font-weight: 500; color: #475569; margin-top: 8px;">평균 API 응답 시간</span>
+</div>
+<div class="glass-panel" style="flex: 1; padding: 16px 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+<div style="position: absolute; right: -10px; bottom: -10px; color: #CBD5E1; opacity: 0.2;"><i class="fas fa-fan" style="font-size: 80px;"></i></div>
+<div style="display: flex; align-items: center; height: 42px;">
+<span style="font-size: 32px; font-weight: 800; color: #10B981; line-height: 1;"><i class="fas fa-check-circle"></i></span>
+</div>
+<span style="font-size: 14px; font-weight: 500; color: #64748B; margin-top: 8px; width: 120%; position: relative; left: 0;">HVAC 자동제어 연동</span>
+</div>
+</div>
+</div>
+<div data-object="true" data-object-type="chart" style="position: absolute; left: 650px; top: 310px; width: 570px; height: 380px; z-index: 10;">
+<div class="glass-panel" style="width: 100%; height: 100%; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin: 0;">알고리즘 동작 시뮬레이션 <span style="font-weight: 400; color: #64748B; font-size: 14px; margin-left: 6px;">(HMM State Transition)</span></h3>
+<div style="display: flex; gap: 16px;">
+<div style="display: flex; align-items: center; gap: 6px;">
+<span style="width: 12px; height: 4px; border-radius: 2px; background-color: #3B82F6;"></span>
+<span style="font-size: 12px; font-weight: 500; color: #475569;">전력 패턴</span>
+</div>
+<div style="display: flex; align-items: center; gap: 6px;">
+<span style="width: 12px; height: 4px; border-radius: 2px; background-color: #10B981;"></span>
+<span style="font-size: 12px; font-weight: 500; color: #475569;">재실 확률</span>
+</div>
+</div>
+</div>
+<div id="occupancy-chart" style="flex: 1; width: 100%;"></div>
+</div>
+<script>
+    {
+        const chartDom = document.getElementById('occupancy-chart');
+        const myChart = echarts.init(chartDom);
+
+        const timeData = [];
+        const powerData = [];
+        const probData = [];
+
+        for (let i = 0; i <= 24; i++) {
+            timeData.push(`${i}:00`);
+            let power = 10 + Math.random() * 5;
+            let prob = 0.02 + Math.random() * 0.05;
+            
+            if (i >= 8 && i < 9) {
+                power = 40 + Math.random() * 20;
+                prob = 0.6 + Math.random() * 0.2;
+            } else if (i >= 9 && i <= 11) {
+                power = 80 + Math.random() * 30;
+                prob = 0.95 + Math.random() * 0.04;
+            } else if (i === 12) {
+                power = 45 + Math.random() * 15;
+                prob = 0.4 + Math.random() * 0.2;
+            } else if (i >= 13 && i <= 18) {
+                power = 85 + Math.random() * 25;
+                prob = 0.9 + Math.random() * 0.08;
+            } else if (i > 18 && i <= 20) {
+                power = 35 + Math.random() * 20;
+                prob = 0.3 + Math.random() * 0.15;
+            } else if (i > 20 && i <= 22) {
+                power = 20 + Math.random() * 10;
+                prob = 0.1 + Math.random() * 0.1;
+            }
+            
+            powerData.push(power);
+            probData.push(prob);
+        }
+
+        const option = {
+            animation: false,
+            grid: { top: 10, bottom: 20, left: 30, right: 10, containLabel: true },
+            tooltip: {
+                trigger: 'axis',
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                borderColor: '#E2E8F0',
+                textStyle: { color: '#1E293B' }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: timeData,
+                axisLine: { lineStyle: { color: '#CBD5E1' } },
+                axisLabel: { color: '#64748B', fontSize: 11, interval: 3 }
+            },
+            yAxis: [
+                {
+                    type: 'value',
+                    splitLine: { lineStyle: { color: '#E2E8F0', type: 'dashed' } },
+                    axisLabel: { color: '#64748B', fontSize: 11 }
+                },
+                {
+                    type: 'value',
+                    max: 1.1,
+                    show: false
+                }
+            ],
+            series: [
+                {
+                    name: '전력 패턴',
+                    type: 'line',
+                    smooth: 0.4,
+                    showSymbol: false,
+                    data: powerData,
+                    lineStyle: { width: 3, color: '#3B82F6' },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: 'rgba(59, 130, 246, 0.15)' },
+                            { offset: 1, color: 'rgba(59, 130, 246, 0.01)' }
+                        ])
+                    }
+                },
+                {
+                    name: '재실 확률',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    step: 'end',
+                    showSymbol: false,
+                    data: probData,
+                    lineStyle: { width: 2, color: '#10B981', type: 'solid' },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: 'rgba(16, 185, 129, 0.15)' },
+                            { offset: 1, color: 'rgba(16, 185, 129, 0.01)' }
+                        ])
+                    }
+                }
+            ]
+        };
+        
+        myChart.setOption(option);
+        window.addEventListener('resize', function() {
+            myChart.resize();
+        });
+    }
+    </script>
+</div>
+</div>
+</body>
+</html>

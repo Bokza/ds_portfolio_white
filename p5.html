@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport"/>
+<title>LLM 기반 건물 에너지 분석 챗봇 상세</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F8FAFC;
+            color: #334155;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+        }
+        p { margin: 0; padding: 0; }
+        ul { margin: 0; padding: 0; list-style: none; }
+        .highlight-violet { color: #7C3AED; font-weight: 700; }
+        .highlight-indigo { color: #4F46E5; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- 배경 요소 - Adjusting positions to be within bounds and less aggressive blur overflow -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 750px; top: -100px; width: 600px; height: 600px; background-color: #8B5CF6; border-radius: 50%; filter: blur(120px); opacity: 0.08; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; left: -50px; top: 400px; width: 500px; height: 500px; background-color: #6366F1; border-radius: 50%; filter: blur(120px); opacity: 0.08; z-index: 1;"></div>
+<!-- 1. 타이틀 섹션 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 40px; width: 1160px; height: 110px; z-index: 10;">
+<div style="display: flex; flex-direction: column;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<span style="font-size: 16px; font-weight: 700; color: #8B5CF6; letter-spacing: 0.15em; text-transform: uppercase;">PROJECT 03</span>
+<span style="background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); color: #7C3AED; font-size: 14px; font-weight: 600; padding: 6px 16px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">Service Agent</span>
+</div>
+<div style="border-bottom: 2px solid rgba(0, 0, 0, 0.05); padding-bottom: 12px;">
+<h1 style="font-size: 44px; font-weight: 800; color: #1E293B; margin: 0; line-height: 1.2; letter-spacing: -0.02em; text-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                    LLM 에너지 분석 챗봇 <span style="font-size: 22px; font-weight: 500; color: #64748B; margin-left: 15px;">Solution Summary Agent</span>
+</h1>
+</div>
+</div>
+</div>
+<!-- 2. 프로젝트 개요 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 175px; width: 540px; height: 140px; z-index: 10;">
+<div style="display: flex; align-items: center; margin-bottom: 14px; gap: 10px;">
+<div style="width: 4px; height: 22px; background: linear-gradient(to bottom, #8B5CF6, #6366F1); border-radius: 2px;"></div>
+<h3 style="font-size: 22px; font-weight: 700; color: #1E293B; margin: 0;">프로젝트 개요</h3>
+</div>
+<p style="font-size: 17px; line-height: 1.7; color: #475569; font-weight: 400; padding-left: 14px;">
+                비개발자도 SQL 작성 없이 자연어로 복잡한 건물 에너지 데이터를 조회·분석할 수 있는 <span style="color: #7C3AED; font-weight: 600;">LLM 기반 멀티턴 대화형 에이전트</span>입니다. LangGraph를 통해 사고 과정을 구조화하여 데이터 접근성을 혁신했습니다.
+            </p>
+</div>
+<!-- 3. 주요 역할 및 성과 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 335px; width: 560px; height: 280px; z-index: 10;">
+<div style="display: flex; align-items: center; margin-bottom: 18px; gap: 10px;">
+<div style="width: 4px; height: 22px; background: linear-gradient(to bottom, #8B5CF6, #6366F1); border-radius: 2px;"></div>
+<h3 style="font-size: 22px; font-weight: 700; color: #1E293B; margin: 0;">주요 역할 및 성과</h3>
+</div>
+<ul style="display: flex; flex-direction: column; gap: 16px; padding-left: 14px;">
+<li style="font-size: 16px; line-height: 1.6; color: #475569; padding-left: 28px; position: relative;">
+<i class="fa-solid fa-check" style="position: absolute; left: 0; top: 4px; color: #8B5CF6; font-size: 16px;"></i>
+<strong style="color: #1E293B;">LangGraph 아키텍처:</strong> 상태(State) 기반 멀티턴 대화 제어 및 에이전트 루프 설계로 문맥 유지 능력 강화
+                </li>
+<li style="font-size: 16px; line-height: 1.6; color: #475569; padding-left: 28px; position: relative;">
+<i class="fa-solid fa-check" style="position: absolute; left: 0; top: 4px; color: #8B5CF6; font-size: 16px;"></i>
+<strong style="color: #1E293B;">Multi-Tool Orchestration:</strong> <span style="color: #4F46E5; font-weight: 600;">SQL Toolkit</span>(DB), 예측 모델 API, 매뉴얼 검색(RAG)의 유기적 결합
+                </li>
+<li style="font-size: 16px; line-height: 1.6; color: #475569; padding-left: 28px; position: relative;">
+<i class="fa-solid fa-check" style="position: absolute; left: 0; top: 4px; color: #8B5CF6; font-size: 16px;"></i>
+<strong style="color: #1E293B;">System Prompt:</strong> 도메인 특화 쿼리 생성 규칙 및 할루시네이션 방지 로직 구현
+                </li>
+<li style="font-size: 16px; line-height: 1.6; color: #475569; padding-left: 28px; position: relative;">
+<i class="fa-solid fa-check" style="position: absolute; left: 0; top: 4px; color: #8B5CF6; font-size: 16px;"></i>
+<strong style="color: #1E293B;">Data Accessibility:</strong> 자연어 질의로 즉시 데이터 접근 환경 구축
+                </li>
+</ul>
+</div>
+<!-- 4. TECH STACK -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 630px; width: 560px; height: 60px; z-index: 10;">
+<div style="font-size: 14px; font-weight: 700; color: #64748B; margin-bottom: 10px; letter-spacing: 0.1em;">TECH STACK</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #475569; padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+<i class="fas fa-brain" style="color: #8B5CF6;"></i> LangGraph
+                </span>
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #475569; padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+<i class="fas fa-link" style="color: #8B5CF6;"></i> LangChain
+                </span>
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #475569; padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+<i class="fas fa-robot" style="color: #8B5CF6;"></i> GPT-4
+                </span>
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #475569; padding: 6px 14px; border-radius: 6px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+<i class="fas fa-database" style="color: #8B5CF6;"></i> PostgreSQL
+                </span>
+</div>
+</div>
+<!-- 5. KPI 카드 섹션 -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 640px; top: 175px; width: 580px; height: 140px; z-index: 10;">
+<div style="display: flex; gap: 15px; height: 100%;">
+<!-- 카드 1 -->
+<div style="flex: 1; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.04); position: relative; overflow: hidden;">
+<div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);"></div>
+<div style="font-size: 38px; font-weight: 800; color: #1E293B; line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline;">
+                        No<span style="font-size: 22px; color: #8B5CF6; margin-left: 4px;">SQL</span>
+</div>
+<div style="font-size: 14px; font-weight: 600; color: #64748B;">Code-Free 분석</div>
+</div>
+<!-- 카드 2 -->
+<div style="flex: 1; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.04); position: relative; overflow: hidden;">
+<div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);"></div>
+<div style="font-size: 38px; font-weight: 800; color: #1E293B; line-height: 1; margin-bottom: 8px; display: flex; align-items: center; justify-content: center;">
+<i class="fas fa-comments" style="color: #8B5CF6;"></i>
+</div>
+<div style="font-size: 14px; font-weight: 600; color: #64748B;">멀티턴 문맥 유지</div>
+</div>
+<!-- 카드 3 -->
+<div style="flex: 1; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.04); position: relative; overflow: hidden;">
+<div style="position: absolute; top: 0; right: 0; width: 60px; height: 60px; background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);"></div>
+<div style="font-size: 34px; font-weight: 800; color: #1E293B; line-height: 1; margin-bottom: 8px; display: flex; align-items: baseline;">
+<span style="color: #4F46E5;">Hybrid</span>
+</div>
+<div style="font-size: 14px; font-weight: 600; color: #64748B;">SQL + RAG + API</div>
+</div>
+</div>
+</div>
+<!-- 6. 차트 섹션 -->
+<div data-object="true" data-object-type="chart" style="position: absolute; left: 640px; top: 335px; width: 580px; height: 355px; z-index: 10;">
+<div style="width: 100%; height: 100%; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 20px; box-sizing: border-box; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+<div style="display: flex; align-items: center; gap: 8px;">
+<i class="fas fa-project-diagram" style="color: #8B5CF6; font-size: 16px;"></i>
+<span style="font-size: 17px; font-weight: 700; color: #1E293B;">Agent Workflow (LangGraph Logic)</span>
+</div>
+</div>
+<div id="agent-chart" style="width: 100%; height: 285px;"></div>
+</div>
+<script>
+                {
+                    const chartDom = document.getElementById('agent-chart');
+                    const myChart = echarts.init(chartDom);
+                    
+                    const option = {
+                        backgroundColor: 'transparent',
+                        animationDurationUpdate: 1500,
+                        animationEasingUpdate: 'quinticInOut',
+                        series: [
+                            {
+                                type: 'graph',
+                                layout: 'none',
+                                symbolSize: 55,
+                                roam: false,
+                                label: {
+                                    show: true,
+                                    position: 'bottom',
+                                    color: '#334155',
+                                    fontSize: 12,
+                                    fontWeight: 'bold',
+                                    formatter: '{b}',
+                                    distance: 8
+                                },
+                                edgeSymbol: ['circle', 'arrow'],
+                                edgeSymbolSize: [4, 10],
+                                edgeLabel: { fontSize: 11 },
+                                data: [
+                                    { name: 'User', x: 50, y: 150, symbolSize: 45, itemStyle: { color: '#F1F5F9', borderColor: '#94A3B8', borderWidth: 2 } },
+                                    { name: 'Agent\n(Planner)', x: 200, y: 150, symbolSize: 65, itemStyle: { color: '#EDE9FE', borderColor: '#8B5CF6', borderWidth: 2, shadowBlur: 10, shadowColor: 'rgba(139, 92, 246, 0.2)' } },
+                                    { name: 'SQL Tool', x: 350, y: 50, itemStyle: { color: '#DBEAFE', borderColor: '#3B82F6', borderWidth: 2 } },
+                                    { name: 'RAG', x: 350, y: 150, itemStyle: { color: '#D1FAE5', borderColor: '#10B981', borderWidth: 2 } },
+                                    { name: 'Predict', x: 350, y: 250, itemStyle: { color: '#FEF3C7', borderColor: '#F59E0B', borderWidth: 2 } },
+                                    { name: 'Response', x: 500, y: 150, symbolSize: 50, itemStyle: { color: '#E0E7FF', borderColor: '#6366F1', borderWidth: 2 } }
+                                ],
+                                links: [
+                                    { source: 'User', target: 'Agent\n(Planner)', lineStyle: { color: '#94A3B8', width: 3 } },
+                                    { source: 'Agent\n(Planner)', target: 'SQL Tool', lineStyle: { curveness: -0.2, color: '#94A3B8', width: 2 } },
+                                    { source: 'Agent\n(Planner)', target: 'RAG', lineStyle: { color: '#94A3B8', width: 2 } },
+                                    { source: 'Agent\n(Planner)', target: 'Predict', lineStyle: { curveness: 0.2, color: '#94A3B8', width: 2 } },
+                                    { source: 'SQL Tool', target: 'Response', lineStyle: { curveness: -0.2, color: '#94A3B8', type: 'dashed', width: 2 } },
+                                    { source: 'RAG', target: 'Response', lineStyle: { color: '#94A3B8', type: 'dashed', width: 2 } },
+                                    { source: 'Predict', target: 'Response', lineStyle: { curveness: 0.2, color: '#94A3B8', type: 'dashed', width: 2 } }
+                                ],
+                                lineStyle: { width: 2, curveness: 0 }
+                            }
+                        ]
+                    };
+                    myChart.setOption(option);
+                }
+            </script>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport"/>
+<title>저수지 수위 예측 솔루션 상세 - Light Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #FFFFFF;
+            color: #1E293B;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+        }
+        p { margin: 0; padding: 0; }
+        ul { margin: 0; padding: 0; list-style: none; }
+        .highlight-blue { color: #2563EB; font-weight: 700; }
+        .highlight-green { color: #059669; font-weight: 700; }
+        .glass-panel {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Decorative Background Elements -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: -100px; top: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0) 70%); border-radius: 50%; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 800px; top: 400px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(16, 185, 129, 0.04) 0%, rgba(16, 185, 129, 0) 70%); border-radius: 50%; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 1050px; top: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, rgba(139, 92, 246, 0) 70%); border-radius: 50%; z-index: 1;"></div>
+<!-- Header Section -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 40px; width: 1160px; height: 100px; z-index: 10;">
+<div style="display: flex; flex-direction: column; border-bottom: 1px solid #E2E8F0; padding-bottom: 16px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<div style="display: flex; align-items: center; gap: 12px;">
+<span style="width: 8px; height: 8px; background-color: #3B82F6; border-radius: 50%;"></span>
+<span style="font-size: 14px; font-weight: 700; color: #64748B; letter-spacing: 0.15em;">PROJECT 05</span>
+</div>
+<span style="background: #ECFDF5; border: 1px solid #A7F3D0; color: #059669; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.05em;">PRODUCTION</span>
+</div>
+<div style="display: flex; align-items: baseline; gap: 16px;">
+<h1 style="font-size: 40px; font-weight: 800; color: #0F172A; margin: 0; line-height: 1.1; letter-spacing: -0.02em;">저수지 수위 예측 솔루션</h1>
+<span style="font-size: 20px; font-weight: 400; color: #64748B; letter-spacing: 0.02em;">Reservoir Level Prediction Service</span>
+</div>
+</div>
+</div>
+<!-- Left Column: Content -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 160px; width: 540px; height: 120px; z-index: 10;">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+<i class="fa-solid fa-bullseye" style="color: #3B82F6; font-size: 18px;"></i>
+<h3 style="font-size: 20px; font-weight: 700; color: #0F172A; margin: 0;">프로젝트 개요</h3>
+</div>
+<p style="font-size: 16px; line-height: 1.7; color: #475569; font-weight: 400; text-align: justify; padding-right: 10px;">
+        주민 안전 및 수문 조작 의사결정을 지원하기 위해 강우량과 수위 데이터를 실시간 분석하여, <span class="highlight-blue">12시간 후의 저수지 수위</span>를 예측하는 <span class="highlight-green">머신러닝 서비스</span>입니다.
+    </p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 300px; width: 540px; height: 320px; z-index: 10;">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+<i class="fa-solid fa-layer-group" style="color: #10B981; font-size: 18px;"></i>
+<h3 style="font-size: 20px; font-weight: 700; color: #0F172A; margin: 0;">주요 역할 및 기술적 성과</h3>
+</div>
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+<span style="color: #3B82F6; font-size: 12px; font-weight: 800;">01</span>
+</div>
+<p style="font-size: 16px; line-height: 1.6; color: #475569;"><strong>데이터 분석(EDA):</strong> 강우-수위 상관관계 분석을 통해 <span style="color:#2563EB; font-weight:600;">1~2시간 래그(Lag) 패턴</span> 도출 및 파생변수 설계</p>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+<span style="color: #3B82F6; font-size: 12px; font-weight: 800;">02</span>
+</div>
+<p style="font-size: 16px; line-height: 1.6; color: #475569;"><strong>강건한 전처리 파이프라인:</strong> <span style="color:#059669; font-weight:600;">Hampel Filter</span> 기반 이상치(Spike) 탐지 및 선형 보간 로직 구현</p>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+<span style="color: #3B82F6; font-size: 12px; font-weight: 800;">03</span>
+</div>
+<p style="font-size: 16px; line-height: 1.6; color: #475569;"><strong>듀얼 모델 아키텍처:</strong> AutoML과 시계열 특화 모델인 <span style="color:#8B5CF6; font-weight:600;">DLinear</span>를 결합하여 예측 성능 극대화</p>
+</div>
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+<div style="width: 24px; height: 24px; border-radius: 6px; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+<span style="color: #3B82F6; font-size: 12px; font-weight: 800;">04</span>
+</div>
+<p style="font-size: 16px; line-height: 1.6; color: #475569;"><strong>비즈니스 임팩트:</strong> 주민 대피 골든타임을 확보하고 수문 조작 의사결정 자동화 기반 마련</p>
+</div>
+</div>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 60px; top: 625px; width: 540px; height: 85px; z-index: 10;">
+<div style="font-size: 13px; font-weight: 600; color: #64748B; margin-bottom: 10px; letter-spacing: 0.1em;">TECH STACK</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 5px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fab fa-python" style="margin-right: 6px; color:#3B82F6;"></i>Python</span>
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 5px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fas fa-robot" style="margin-right: 6px; color:#3B82F6;"></i>AutoML</span>
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 5px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fas fa-wave-square" style="margin-right: 6px; color:#3B82F6;"></i>DLinear</span>
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 5px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fas fa-bolt" style="margin-right: 6px; color:#3B82F6;"></i>FastAPI</span>
+<span style="background: #F8FAFC; border: 1px solid #CBD5E1; color: #334155; padding: 5px 12px; border-radius: 6px; font-size: 14px; font-weight: 500;"><i class="fas fa-chart-line" style="margin-right: 6px; color:#3B82F6;"></i>Time-Series</span>
+</div>
+</div>
+<!-- Right Column: KPIs & Chart -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 650px; top: 160px; width: 570px; height: 130px; z-index: 10;">
+<div style="display: flex; gap: 16px; height: 100%;">
+<div class="glass-panel" style="flex: 1; padding: 16px 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+<div style="position: absolute; right: -10px; bottom: -10px; color: #CBD5E1; opacity: 0.2;"><i class="fas fa-clock" style="font-size: 80px;"></i></div>
+<div style="display: flex; align-items: baseline; gap: 4px;">
+<span style="font-size: 42px; font-weight: 800; color: #0F172A; line-height: 1;">12</span>
+<span style="font-size: 18px; font-weight: 600; color: #64748B;">h</span>
+</div>
+<span style="font-size: 14px; font-weight: 500; color: #64748B; margin-top: 8px;">예측 선행 시간</span>
+</div>
+<div class="glass-panel" style="flex: 1; padding: 16px 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%); border: 1px solid #BAE6FD;">
+<div style="position: absolute; right: -10px; bottom: -10px; color: #93C5FD; opacity: 0.3;"><i class="fas fa-person-running" style="font-size: 80px;"></i></div>
+<div style="display: flex; align-items: baseline; gap: 4px;">
+<span style="font-size: 20px; font-weight: 800; color: #2563EB; line-height: 1;">Max</span>
+<span style="font-size: 42px; font-weight: 800; color: #2563EB; line-height: 1; margin-left: 4px;">12</span>
+<span style="font-size: 18px; font-weight: 600; color: #3B82F6;">h</span>
+</div>
+<span style="font-size: 14px; font-weight: 500; color: #475569; margin-top: 8px;">대피 시간 단축</span>
+</div>
+<div class="glass-panel" style="flex: 1; padding: 16px 20px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+<div style="position: absolute; right: -10px; bottom: -10px; color: #CBD5E1; opacity: 0.2;"><i class="fas fa-layer-group" style="font-size: 80px;"></i></div>
+<div style="display: flex; align-items: center; height: 42px;">
+<span style="font-size: 28px; font-weight: 800; color: #10B981; line-height: 1;">Dual</span>
+</div>
+<span style="font-size: 14px; font-weight: 500; color: #64748B; margin-top: 8px; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">AutoML + DLinear</span>
+</div>
+</div>
+</div>
+<div data-object="true" data-object-type="chart" style="position: absolute; left: 650px; top: 310px; width: 570px; height: 380px; z-index: 10;">
+<div class="glass-panel" style="width: 100%; height: 100%; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<h3 style="font-size: 16px; font-weight: 700; color: #0F172A; margin: 0;">강우량 기반 수위 예측 시뮬레이션</h3>
+<div style="display: flex; gap: 12px;">
+<div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #475569; font-weight: 500;">
+<span style="width: 12px; height: 12px; border-radius: 2px; background-color: #93C5FD;"></span>강우량
+                </div>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #475569; font-weight: 500;">
+<span style="width: 12px; height: 4px; border-radius: 2px; background-color: #0F172A;"></span>실측
+                </div>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #475569; font-weight: 500;">
+<span style="width: 12px; height: 4px; border-radius: 2px; border-top: 2px dashed #3B82F6;"></span>예측
+                </div>
+</div>
+</div>
+<div id="water-level-chart" style="flex: 1; width: 100%;"></div>
+</div>
+<script>
+        {
+            const chartDom = document.getElementById('water-level-chart');
+            const myChart = echarts.init(chartDom);
+            
+            const hours = [];
+            const rainfall = [];
+            const actualLevel = [];
+            const predictedLevel = [];
+            
+            let currentLevel = 50; 
+            
+            for (let i = -12; i <= 12; i++) {
+                const label = i === 0 ? 'Now' : (i > 0 ? `+${i}h` : `${i}h`);
+                hours.push(label);
+                
+                let rain = 0;
+                if (i >= -10 && i <= -6) rain = Math.random() * 30 + 10;
+                else if (i > -6 && i <= -2) rain = Math.random() * 10;
+                rainfall.push(rain.toFixed(1));
+                
+                let rainEffect = 0;
+                if (i >= -8) {
+                    const pastRainIndex = i + 12 - 2; 
+                    if (pastRainIndex >= 0 && pastRainIndex < rainfall.length) {
+                         rainEffect = parseFloat(rainfall[pastRainIndex]) * 0.5;
+                    }
+                }
+                
+                currentLevel += rainEffect * 0.8;
+                if(currentLevel > 95) currentLevel = 95;
+                
+                if (i <= 0) {
+                    actualLevel.push(currentLevel.toFixed(1));
+                    predictedLevel.push(currentLevel.toFixed(1)); 
+                } else {
+                    actualLevel.push(null);
+                    predictedLevel.push((currentLevel + Math.random() * 2).toFixed(1));
+                }
+            }
+
+            const option = {
+                animation: false,
+                grid: { top: 10, bottom: 20, left: 30, right: 30, containLabel: true },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    borderColor: '#E2E8F0',
+                    textStyle: { color: '#1E293B' },
+                    axisPointer: { type: 'cross', label: { backgroundColor: '#64748B' } }
+                },
+                xAxis: {
+                    type: 'category',
+                    data: hours,
+                    axisLine: { lineStyle: { color: '#CBD5E1' } },
+                    axisLabel: { color: '#64748B', fontSize: 11 },
+                    axisTick: { show: false }
+                },
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: '수위 (%)',
+                        min: 40,
+                        max: 100,
+                        position: 'left',
+                        splitLine: { lineStyle: { color: '#E2E8F0', type: 'dashed' } },
+                        axisLabel: { color: '#64748B', fontSize: 11 },
+                        nameTextStyle: { color: '#64748B', fontSize: 11, padding: [0, 20, 0, 0] }
+                    },
+                    {
+                        type: 'value',
+                        name: '강우량',
+                        min: 0,
+                        max: 60,
+                        position: 'right',
+                        splitLine: { show: false },
+                        axisLabel: { color: '#93C5FD', fontSize: 11 },
+                        nameTextStyle: { color: '#93C5FD', fontSize: 11, padding: [0, 0, 0, 20] }
+                    }
+                ],
+                series: [
+                    {
+                        name: '강우량',
+                        type: 'bar',
+                        yAxisIndex: 1,
+                        data: rainfall,
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#93C5FD' },
+                                { offset: 1, color: 'rgba(147, 197, 253, 0.1)' }
+                            ]),
+                            borderRadius: [3, 3, 0, 0]
+                        },
+                        barWidth: '50%'
+                    },
+                    {
+                        name: '실측',
+                        type: 'line',
+                        yAxisIndex: 0,
+                        data: actualLevel,
+                        smooth: true,
+                        showSymbol: false,
+                        lineStyle: { width: 3, color: '#0F172A' },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(15, 23, 42, 0.05)' },
+                                { offset: 1, color: 'rgba(15, 23, 42, 0)' }
+                            ])
+                        }
+                    },
+                    {
+                        name: '예측',
+                        type: 'line',
+                        yAxisIndex: 0,
+                        data: predictedLevel,
+                        smooth: true,
+                        showSymbol: false,
+                        lineStyle: { width: 3, color: '#3B82F6', type: 'dashed' }
+                    }
+                ]
+            };
+            myChart.setOption(option);
+            window.addEventListener('resize', function() {
+                myChart.resize();
+            });
+        }
+    </script>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport"/>
+<title>건물 에너지 사용량 예측 솔루션 상세</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #F8FAFC;
+            color: #1E293B;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+        }
+        p { margin: 0; padding: 0; }
+        ul { margin: 0; padding: 0; list-style: none; }
+        .highlight-blue { color: #2563EB; font-weight: 700; }
+        .highlight-green { color: #059669; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Background Ambient Shapes -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 800px; top: -100px; width: 600px; height: 600px; background-color: #DBEAFE; border-radius: 50%; filter: blur(120px); opacity: 0.6; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; left: -150px; top: 400px; width: 500px; height: 500px; background-color: #D1FAE5; border-radius: 50%; filter: blur(120px); opacity: 0.5; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 400px; top: 200px; width: 400px; height: 400px; background-color: #EDE9FE; border-radius: 50%; filter: blur(150px); opacity: 0.5; z-index: 1;"></div>
+<!-- Header Section -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 50px; top: 30px; width: 1180px; height: 100px; z-index: 10;">
+<div style="display: flex; flex-direction: column;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<div style="display: flex; align-items: center; gap: 10px;">
+<span style="width: 24px; height: 2px; background-color: #2563EB;"></span>
+<span style="font-size: 16px; font-weight: 800; color: #2563EB; letter-spacing: 0.15em; text-transform: uppercase;">PROJECT 02</span>
+</div>
+<span style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #059669; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; letter-spacing: 0.05em;">
+<i class="fas fa-circle" style="font-size: 8px; margin-right: 6px; vertical-align: middle;"></i>Production
+                </span>
+</div>
+<div style="border-bottom: 1px solid rgba(148, 163, 184, 0.3); padding-bottom: 12px;">
+<h1 style="font-size: 40px; font-weight: 800; color: #0F172A; margin: 0; line-height: 1.1; letter-spacing: -0.02em;">
+                    건물 에너지 사용량 예측 <span style="font-size: 20px; font-weight: 500; color: #64748B; margin-left: 15px; letter-spacing: 0;">Energy Prediction Service</span>
+</h1>
+</div>
+</div>
+</div>
+<!-- Overview Section -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 50px; top: 145px; width: 550px; height: 120px; z-index: 10;">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+<div style="width: 4px; height: 20px; background: linear-gradient(180deg, #10B981, #059669); border-radius: 2px;"></div>
+<h3 style="font-size: 20px; font-weight: 700; color: #1E293B; margin: 0; letter-spacing: -0.01em;">프로젝트 개요</h3>
+</div>
+<p style="font-size: 16px; line-height: 1.65; color: #475569; font-weight: 400;">
+                15분 단위의 에너지 데이터를 기반으로 일·월 단위의 <span class="highlight-blue">전력 수요를 정밀 예측</span>하고, 
+                비효율적인 <span class="highlight-green">낭비량</span>을 사전에 감지하여 에너지 비용 절감을 지원하는 ML 서비스입니다.
+            </p>
+</div>
+<!-- Roles and Achievements Section -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 50px; top: 290px; width: 550px; height: 310px; z-index: 10;">
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+<div style="width: 4px; height: 20px; background: linear-gradient(180deg, #3B82F6, #2563EB); border-radius: 2px;"></div>
+<h3 style="font-size: 20px; font-weight: 700; color: #1E293B; margin: 0; letter-spacing: -0.01em;">주요 역할 및 성과</h3>
+</div>
+<ul style="display: flex; flex-direction: column; gap: 16px;">
+<li style="font-size: 16px; line-height: 1.5; color: #475569; padding-left: 32px; position: relative;">
+<div style="position: absolute; left: 0; top: 4px; width: 18px; height: 18px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+<i class="fa-solid fa-check" style="color: #2563EB; font-size: 10px;"></i>
+</div>
+<strong style="color: #0F172A;">XGBoost 듀얼 모델 아키텍처:</strong> <span class="highlight-blue">실사용량 예측</span> 및 <span class="highlight-green">낭비량 감지</span> 모델 분리 설계로 정확도 극대화
+                </li>
+<li style="font-size: 16px; line-height: 1.5; color: #475569; padding-left: 32px; position: relative;">
+<div style="position: absolute; left: 0; top: 4px; width: 18px; height: 18px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+<i class="fa-solid fa-check" style="color: #2563EB; font-size: 10px;"></i>
+</div>
+<strong style="color: #0F172A;">Feature Engineering:</strong> 체감온도, 냉방도일(CDH), 시간 주기성(Sin/Cos) 등 도메인 특화 변수 적용
+                </li>
+<li style="font-size: 16px; line-height: 1.5; color: #475569; padding-left: 32px; position: relative;">
+<div style="position: absolute; left: 0; top: 4px; width: 18px; height: 18px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+<i class="fa-solid fa-check" style="color: #2563EB; font-size: 10px;"></i>
+</div>
+<strong style="color: #0F172A;">MLOps 파이프라인 구축:</strong> 건물별 GridSearchCV 하이퍼파라미터 최적화 및 MLflow 기반 모델 버전 관리
+                </li>
+<li style="font-size: 16px; line-height: 1.5; color: #475569; padding-left: 32px; position: relative;">
+<div style="position: absolute; left: 0; top: 4px; width: 18px; height: 18px; background: rgba(59, 130, 246, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+<i class="fa-solid fa-check" style="color: #2563EB; font-size: 10px;"></i>
+</div>
+<strong style="color: #0F172A;">프로덕션 성과:</strong> 11개 건물 배포, 피크 요금 제어 지원으로 운영 비용 절감 기여
+                </li>
+</ul>
+</div>
+<!-- Tech Stack Section -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 50px; top: 615px; width: 550px; height: 90px; z-index: 10;">
+<div style="font-size: 14px; font-weight: 800; color: #64748B; margin-bottom: 12px; letter-spacing: 0.1em; display: flex; align-items: center; gap: 8px;">
+<i class="fas fa-layer-group" style="font-size: 12px;"></i> TECH STACK
+            </div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #334155; padding: 6px 14px; border-radius: 24px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+<i class="fab fa-python" style="color: #2563EB;"></i> Python
+                </span>
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #334155; padding: 6px 14px; border-radius: 24px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+<i class="fas fa-brain" style="color: #2563EB;"></i> XGBoost
+                </span>
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #334155; padding: 6px 14px; border-radius: 24px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+<i class="fas fa-cogs" style="color: #2563EB;"></i> MLflow
+                </span>
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #334155; padding: 6px 14px; border-radius: 24px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+<i class="fas fa-box-open" style="color: #2563EB;"></i> BentoML
+                </span>
+<span style="background: #FFFFFF; border: 1px solid #E2E8F0; color: #334155; padding: 6px 14px; border-radius: 24px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+<i class="fas fa-database" style="color: #2563EB;"></i> PostgreSQL
+                </span>
+</div>
+</div>
+<!-- KPI Cards Section -->
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 650px; top: 145px; width: 580px; height: 125px; z-index: 10;">
+<div style="display: flex; gap: 16px; height: 100%;">
+<div style="flex: 1; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+<div style="position: absolute; right: -10px; top: -10px; opacity: 0.05; font-size: 80px; color: #3B82F6;"><i class="fas fa-bullseye"></i></div>
+<span style="font-size: 14px; font-weight: 600; color: #64748B; margin-bottom: 6px; z-index: 1;">예측 정확도</span>
+<span style="font-size: 42px; font-weight: 800; color: #0F172A; line-height: 1; z-index: 1;">0.93<span style="font-size: 18px; font-weight: 600; color: #3B82F6; margin-left: 4px;">R²</span></span>
+</div>
+<div style="flex: 1; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+<div style="position: absolute; right: -10px; top: -10px; opacity: 0.05; font-size: 80px; color: #10B981;"><i class="fas fa-bolt"></i></div>
+<span style="font-size: 14px; font-weight: 600; color: #64748B; margin-bottom: 6px; z-index: 1;">낭비량 예측 오차</span>
+<span style="font-size: 42px; font-weight: 800; color: #0F172A; line-height: 1; z-index: 1;">8.9<span style="font-size: 18px; font-weight: 600; color: #10B981; margin-left: 4px;">%</span></span>
+</div>
+<div style="flex: 1; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden;">
+<div style="position: absolute; right: -10px; top: -10px; opacity: 0.05; font-size: 80px; color: #8B5CF6;"><i class="fas fa-building"></i></div>
+<span style="font-size: 14px; font-weight: 600; color: #64748B; margin-bottom: 6px; z-index: 1;">운영 건물 배포</span>
+<span style="font-size: 42px; font-weight: 800; color: #0F172A; line-height: 1; z-index: 1;">11<span style="font-size: 18px; font-weight: 600; color: #8B5CF6; margin-left: 4px;">개</span></span>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div data-object="true" data-object-type="chart" style="position: absolute; left: 650px; top: 290px; width: 580px; height: 390px; z-index: 10;">
+<div style="width: 100%; height: 100%; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; box-sizing: border-box; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+<div style="display: flex; align-items: center; gap: 8px;">
+<i class="fas fa-chart-area" style="color: #3B82F6;"></i>
+<span style="font-size: 16px; font-weight: 700; color: #1E293B; letter-spacing: -0.01em;">실시간 전력량 예측 (Actual vs Predicted)</span>
+</div>
+<div style="display: flex; gap: 15px;">
+<div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #64748B; font-weight: 600;">
+<span style="width: 12px; height: 3px; background-color: #3B82F6; border-radius: 2px;"></span>실측값
+                        </div>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #64748B; font-weight: 600;">
+<span style="width: 12px; height: 3px; background-color: #10B981; border-radius: 2px;"></span>예측값
+                        </div>
+</div>
+</div>
+<div id="energy-chart" style="width: 100%; height: 310px;"></div>
+</div>
+<script>
+                {
+                    const chartDom = document.getElementById('energy-chart');
+                    const myChart = echarts.init(chartDom);
+                    
+                    const timeData = [];
+                    const actualData = [];
+                    const predictData = [];
+                    
+                    for (let i = 0; i < 24; i++) {
+                        const hour = i < 10 ? `0${i}:00` : `${i}:00`;
+                        timeData.push(hour);
+                        
+                        let base = 50; 
+                        if (i >= 7 && i <= 20) {
+                            base = 200 + Math.sin((i - 7) / 13 * Math.PI) * 150;
+                        }
+                        
+                        const noise = (Math.random() - 0.5) * 20;
+                        const actual = Math.max(0, base + noise);
+                        const predicted = Math.max(0, base + (Math.random() - 0.5) * 5);
+
+                        actualData.push(actual.toFixed(1));
+                        predictData.push(predicted.toFixed(1));
+                    }
+
+                    const option = {
+                        animation: true,
+                        grid: {
+                            top: 20,
+                            bottom: 25,
+                            left: 50,
+                            right: 20,
+                            containLabel: true
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            borderColor: '#E2E8F0',
+                            borderWidth: 1,
+                            textStyle: { color: '#1E293B' },
+                            padding: [10, 15],
+                            axisPointer: { type: 'line', lineStyle: { color: '#CBD5E1', type: 'dashed' } }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data: timeData,
+                            axisLine: { lineStyle: { color: '#E2E8F0' } },
+                            axisLabel: { color: '#64748B', fontSize: 11, interval: 3, margin: 12 },
+                            axisTick: { show: false }
+                        },
+                        yAxis: {
+                            type: 'value',
+                            name: 'kWh',
+                            splitLine: { lineStyle: { color: '#F1F5F9', type: 'dashed' } },
+                            axisLabel: { color: '#64748B', margin: 12 },
+                            nameTextStyle: { color: '#64748B', padding: [0, 0, 0, 20], fontSize: 11 }
+                        },
+                        series: [
+                            {
+                                name: '실측값',
+                                type: 'line',
+                                smooth: true,
+                                showSymbol: false,
+                                data: actualData,
+                                lineStyle: { width: 3, color: '#3B82F6' },
+                                areaStyle: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                        { offset: 0, color: 'rgba(59, 130, 246, 0.2)' },
+                                        { offset: 1, color: 'rgba(59, 130, 246, 0.02)' }
+                                    ])
+                                }
+                            },
+                            {
+                                name: '예측값',
+                                type: 'line',
+                                smooth: true,
+                                showSymbol: false,
+                                data: predictData,
+                                lineStyle: { width: 2, color: '#10B981', type: 'dashed' }
+                            }
+                        ]
+                    };
+                    myChart.setOption(option);
+                    
+                    window.addEventListener('resize', function() {
+                        myChart.resize();
+                    });
+                }
+            </script>
+</div>
+</div>
+</body>
+</html>

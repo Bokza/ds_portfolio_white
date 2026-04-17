@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=1280, height=720, initial-scale=1.0" name="viewport"/>
+<title>DQN 기반 건물 냉난방 자동 제어 시스템</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #FFFFFF;
+            color: #1E293B;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            overflow: hidden;
+        }
+        p { margin: 0; padding: 0; }
+        ul { margin: 0; padding: 0; list-style: none; }
+        .highlight-violet { color: #8B5CF6; font-weight: 700; }
+        .highlight-cyan { color: #06B6D4; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Decorative background elements -->
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 830px; top: 0px; width: 450px; height: 450px; background-color: #8B5CF6; border-radius: 50%; filter: blur(100px); opacity: 0.1; z-index: 1;"></div>
+<div data-object="true" data-object-type="shape" style="position: absolute; left: 0px; top: 400px; width: 450px; height: 450px; background-color: #06B6D4; border-radius: 50%; filter: blur(100px); opacity: 0.1; z-index: 1;"></div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 50px; top: 40px; width: 1180px; height: 100px; z-index: 10;">
+<div style="display: flex; flex-direction: column; border-bottom: 2px solid rgba(148, 163, 184, 0.2); padding-bottom: 15px;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+<span style="font-size: 16px; font-weight: 700; color: #EF4444; letter-spacing: 0.1em; text-transform: uppercase;">PROJECT 04</span>
+<span style="background-color: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); color: #7C3AED; font-size: 14px; font-weight: 700; padding: 4px 12px; border-radius: 4px;">Reinforcement Learning</span>
+</div>
+<h1 style="font-size: 40px; font-weight: 800; color: #0F172A; margin: 0; line-height: 1.1; letter-spacing: -0.02em; display: flex; align-items: baseline; gap: 15px;">
+                    HVAC 자동 제어 시스템 <span style="font-size: 20px; font-weight: 400; color: #64748B;">DQN-based HVAC Control</span>
+</h1>
+</div>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 50px; top: 155px; width: 560px; height: 130px; z-index: 10;">
+<div style="border-left: 4px solid #10B981; padding-left: 15px; margin-bottom: 12px;">
+<h3 style="font-size: 20px; font-weight: 700; color: #1E293B; margin: 0;">프로젝트 개요</h3>
+</div>
+<p style="font-size: 16px; line-height: 1.6; color: #334155; font-weight: 400;">
+                심층 강화학습(DQN)을 활용해 HVAC 설정온도를 자동 조정하는 제어 시스템입니다. <strong>겨울철 난방 운전</strong> 시 실내 쾌적성 유지와 <strong>에너지 비용 절감</strong>이라는 상충되는 목표 간의 최적 균형 정책을 학습하여 적용합니다.
+            </p>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 50px; top: 310px; width: 560px; height: 310px; z-index: 10;">
+<div style="border-left: 4px solid #10B981; padding-left: 15px; margin-bottom: 15px;">
+<h3 style="font-size: 20px; font-weight: 700; color: #1E293B; margin: 0;">주요 역할 및 성과</h3>
+</div>
+<ul style="display: flex; flex-direction: column; gap: 16px;">
+<li style="font-size: 16px; line-height: 1.5; color: #334155; padding-left: 24px; position: relative;">
+<i class="fa-solid fa-check" style="position: absolute; left: 0; top: 5px; color: #10B981; font-size: 14px;"></i>
+<strong style="color: #0F172A;">RL 환경 설계:</strong> 상태(실내/외기온도), 행동(난방 설정온도 ±2°C), 보상(쾌적도+비용페널티) 정의
+                </li>
+<li style="font-size: 16px; line-height: 1.5; color: #334155; padding-left: 24px; position: relative;">
+<i class="fa-solid fa-check" style="position: absolute; left: 0; top: 5px; color: #10B981; font-size: 14px;"></i>
+<strong style="color: #0F172A;">DQN 모델 구현:</strong> PyTorch 기반 Q Network/Target Network 이중 구조 및 Replay Buffer 적용
+                </li>
+<li style="font-size: 16px; line-height: 1.5; color: #334155; padding-left: 24px; position: relative;">
+<i class="fa-solid fa-check" style="position: absolute; left: 0; top: 5px; color: #10B981; font-size: 14px;"></i>
+<strong style="color: #0F172A;">온라인 학습 파이프라인:</strong> Airflow 기반 <span style="color: #2563EB; font-weight: 700;">15분 주기</span> 데이터 수집-학습-추론 자동화
+                </li>
+<li style="font-size: 16px; line-height: 1.5; color: #334155; padding-left: 24px; position: relative;">
+<i class="fa-solid fa-check" style="position: absolute; left: 0; top: 5px; color: #10B981; font-size: 14px;"></i>
+<strong style="color: #0F172A;">에너지 최적화:</strong> 외기온도 급감 시 선제적 난방 강화, 일사량 충분 시 설정온도 하향으로 과난방 방지
+                </li>
+</ul>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 50px; top: 625px; width: 560px; height: 80px; z-index: 10;">
+<div style="font-size: 14px; font-weight: 700; color: #64748B; margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase;">TECH STACK</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap;">
+<span style="background: #F8FAFC; border: 1px solid #E2E8F0; color: #3B82F6; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+<i class="fab fa-python"></i> PyTorch
+                </span>
+<span style="background: #F8FAFC; border: 1px solid #E2E8F0; color: #3B82F6; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+<i class="fas fa-brain"></i> DQN (RL)
+                </span>
+<span style="background: #F8FAFC; border: 1px solid #E2E8F0; color: #3B82F6; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+<i class="fas fa-wind"></i> Airflow
+                </span>
+<span style="background: #F8FAFC; border: 1px solid #E2E8F0; color: #3B82F6; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+<i class="fas fa-database"></i> PostgreSQL
+                </span>
+<span style="background: #F8FAFC; border: 1px solid #E2E8F0; color: #3B82F6; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 6px;">
+<i class="fas fa-server"></i> FastAPI
+                </span>
+</div>
+</div>
+<div data-object="true" data-object-type="textbox" style="position: absolute; left: 650px; top: 155px; width: 580px; height: 135px; z-index: 10;">
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; height: 100%;">
+<div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+<span style="font-size: 42px; font-weight: 800; color: #0F172A; line-height: 1;">15<span style="font-size: 20px; font-weight: 500; color: #64748B; margin-left: 4px;">대</span></span>
+<span style="font-size: 14px; font-weight: 500; color: #64748B; margin-top: 8px;">제어 적용 실내기</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+<span style="font-size: 42px; font-weight: 800; color: #0F172A; line-height: 1;">15<span style="font-size: 20px; font-weight: 500; color: #64748B; margin-left: 4px;">min</span></span>
+<span style="font-size: 14px; font-weight: 500; color: #64748B; margin-top: 8px;">제어 주기 (Online)</span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+<span style="font-size: 42px; font-weight: 800; color: #3B82F6; line-height: 1;"><i class="fas fa-balance-scale"></i></span>
+<span style="font-size: 14px; font-weight: 500; color: #64748B; margin-top: 8px;">쾌적-비용 균형</span>
+</div>
+</div>
+</div>
+<div data-object="true" data-object-type="chart" style="position: absolute; left: 650px; top: 310px; width: 580px; height: 380px; z-index: 10;">
+<div style="width: 100%; height: 100%; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; padding: 20px; box-sizing: border-box; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+<span style="font-size: 16px; font-weight: 700; color: #1E293B;">겨울철 난방 최적 제어 시뮬레이션 (DQN Policy)</span>
+<div style="display: flex; gap: 15px;">
+<div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #64748B;">
+<span style="width: 10px; height: 10px; border-radius: 50%; background-color: #3B82F6;"></span>DQN 제어
+                        </div>
+<div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #64748B;">
+<span style="width: 10px; height: 10px; border-radius: 50%; background-color: #94A3B8;"></span>고정 제어
+                        </div>
+</div>
+</div>
+<div id="rl-chart" style="width: 100%; height: 300px;"></div>
+</div>
+<script>
+                {
+                    const chartDom = document.getElementById('rl-chart');
+                    const myChart = echarts.init(chartDom);
+                    
+                    const hours = Array.from({length: 24}, (_, i) => `${i}h`);
+                    const outdoorTemp = [-4, -5, -6, -6, -7, -7, -6, -4, -2, 0, 2, 4, 5, 5, 4, 2, 0, -1, -2, -3, -3, -4, -4, -5];
+                    const fixedSetPoint = Array(24).fill(20);
+                    const rlSetPoint = [
+                        18, 18, 18, 18, 19,
+                        24, 24, 23,
+                        22, 21, 20, 19, 19, 19, 20,
+                        22, 22, 22, 22, 21,
+                        19, 18, 18, 18
+                    ];
+
+                    const option = {
+                        animation: false,
+                        grid: { top: 20, bottom: 25, left: 40, right: 20, containLabel: true },
+                        xAxis: {
+                            type: 'category',
+                            data: hours,
+                            axisLine: { lineStyle: { color: '#CBD5E1' } },
+                            axisLabel: { color: '#64748B', interval: 3, fontSize: 11 }
+                        },
+                        yAxis: [
+                            {
+                                type: 'value',
+                                name: 'Temp (°C)',
+                                nameTextStyle: { color: '#64748B' },
+                                min: -10,
+                                max: 30,
+                                splitLine: { lineStyle: { color: 'rgba(203, 213, 225, 0.5)' } },
+                                axisLabel: { color: '#64748B', fontSize: 11 }
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '외기온도',
+                                type: 'line',
+                                smooth: true,
+                                data: outdoorTemp,
+                                lineStyle: { type: 'dotted', color: '#94A3B8', width: 2 },
+                                showSymbol: false,
+                                z: 1
+                            },
+                            {
+                                name: '기존 고정 제어',
+                                type: 'line',
+                                step: 'end',
+                                data: fixedSetPoint,
+                                lineStyle: { color: '#94A3B8', width: 2 },
+                                showSymbol: false,
+                                z: 2
+                            },
+                            {
+                                name: 'DQN 난방 제어',
+                                type: 'line',
+                                step: 'end',
+                                data: rlSetPoint,
+                                lineStyle: { color: '#3B82F6', width: 3 },
+                                areaStyle: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                        { offset: 0, color: 'rgba(59, 130, 246, 0.2)' },
+                                        { offset: 1, color: 'rgba(59, 130, 246, 0)' }
+                                    ])
+                                },
+                                showSymbol: false,
+                                z: 3
+                            }
+                        ]
+                    };
+                    myChart.setOption(option);
+                }
+            </script>
+</div>
+</div>
+</body>
+</html>
