@@ -36,7 +36,7 @@ export default function Slide05() {
       const option = {
         backgroundColor: "transparent",
         animationDurationUpdate: 1500,
-        animationEasingUpdate: "quinticInOut",
+        animationEasingUpdate: "quinticInOut" as const,
         series: [
           {
             type: "graph",

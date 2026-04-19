@@ -110,9 +110,9 @@ export default function Slide01() {
     const option = {
       animation: true,
       animationDuration: 900,
-      animationEasing: "cubicOut",
+      animationEasing: "cubicOut" as const,
       animationDurationUpdate: 600,
-      animationEasingUpdate: "cubicOut",
+      animationEasingUpdate: "cubicOut" as const,
       grid: {
         top: 20,
         bottom: 20,

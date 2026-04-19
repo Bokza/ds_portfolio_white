@@ -75,9 +75,9 @@ export default function Slide03() {
       const option = {
         animation: true,
         animationDuration: 900,
-        animationEasing: "cubicOut",
+        animationEasing: "cubicOut" as const,
         animationDurationUpdate: 600,
-        animationEasingUpdate: "cubicOut",
+        animationEasingUpdate: "cubicOut" as const,
         grid: { top: 10, bottom: 20, left: 30, right: 10, containLabel: true },
         tooltip: {
           trigger: "axis",

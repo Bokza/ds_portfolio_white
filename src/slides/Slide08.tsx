@@ -259,9 +259,9 @@ export default function Slide08() {
     const option = {
       animation: true,
       animationDuration: 900,
-      animationEasing: "cubicOut",
+      animationEasing: "cubicOut" as const,
       animationDurationUpdate: 600,
-      animationEasingUpdate: "cubicOut",
+      animationEasingUpdate: "cubicOut" as const,
       grid: { top: 40, bottom: 0, left: 10, right: 10 },
       xAxis: {
         show: false,
