@@ -243,17 +243,19 @@ export default function Slide05() {
                 marginBottom: "8px",
               }}
             >
-              <span
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "700",
-                  color: "#8B5CF6",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                }}
-              >
-                PROJECT 03
-              </span>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <span style={{ width: "8px", height: "8px", backgroundColor: "#3B82F6", borderRadius: "50%" }}></span>
+                <span
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    color: "#64748B",
+                    letterSpacing: "0.15em",
+                  }}
+                >
+                  PROJECT 03
+                </span>
+              </div>
               <span
                 style={{
                   background: "rgba(139, 92, 246, 0.1)",
@@ -277,7 +279,7 @@ export default function Slide05() {
             >
               <h1
                 style={{
-                  fontSize: "44px",
+                  fontSize: "40px",
                   fontWeight: "800",
                   color: "#1E293B",
                   margin: "0",
@@ -289,7 +291,7 @@ export default function Slide05() {
                 LLM 에너지 분석 챗봇
                 <span
                   style={{
-                    fontSize: "22px",
+                    fontSize: "20px",
                     fontWeight: "500",
                     color: "#64748B",
                     marginLeft: "15px",
@@ -331,7 +333,7 @@ export default function Slide05() {
             ></div>
             <h3
               style={{
-                fontSize: "22px",
+                fontSize: "20px",
                 fontWeight: "700",
                 color: "#1E293B",
                 margin: "0",
@@ -342,7 +344,7 @@ export default function Slide05() {
           </div>
           <p
             style={{
-              fontSize: "17px",
+              fontSize: "16px",
               lineHeight: "1.7",
               color: "#475569",
               fontWeight: "400",
@@ -388,7 +390,7 @@ export default function Slide05() {
             ></div>
             <h3
               style={{
-                fontSize: "22px",
+                fontSize: "20px",
                 fontWeight: "700",
                 color: "#1E293B",
                 margin: "0",
@@ -815,7 +817,7 @@ export default function Slide05() {
                 ></i>
                 <span
                   style={{
-                    fontSize: "17px",
+                    fontSize: "16px",
                     fontWeight: "700",
                     color: "#1E293B",
                   }}

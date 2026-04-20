@@ -629,23 +629,6 @@ export default function Slide09() {
               ></i>
               FastAPI
             </span>
-            <span
-              style={{
-                background: "#F8FAFC",
-                border: "1px solid #CBD5E1",
-                color: "#334155",
-                padding: "5px 12px",
-                borderRadius: "6px",
-                fontSize: "14px",
-                fontWeight: "500",
-              }}
-            >
-              <i
-                className="fas fa-chart-line"
-                style={{ marginRight: "6px", color: "#3B82F6" }}
-              ></i>
-              Time-Series
-            </span>
           </div>
         </div>
         <div

@@ -124,12 +124,14 @@ export default function Slide10() {
         <p style={{color: "#D97706", fontWeight: "700", fontSize: "0.875rem", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "4px"}}>
           Competition Experience
         </p>
-        <h1 style={{fontSize: "2.5rem", fontWeight: "900", color: "#0F172A", margin: "0", letterSpacing: "-0.025em"}}>
-          데이터 분석 대회 성과
-        </h1>
-        <span style={{fontSize: "20px", fontWeight: "400", color: "#64748B"}}>
-          Awards & Recognition
-        </span>
+        <div style={{display: "flex", alignItems: "baseline", gap: "14px"}}>
+          <h1 style={{fontSize: "2.5rem", fontWeight: "900", color: "#0F172A", margin: "0", letterSpacing: "-0.025em"}}>
+            데이터 분석 대회 성과
+          </h1>
+          <span style={{fontSize: "16px", fontWeight: "400", color: "#94A3B8"}}>
+            Awards & Recognition
+          </span>
+        </div>
       </div>
       <div style={{display: "flex", gap: "2rem", alignItems: "center", marginBottom: "4px"}}>
         <div style={{textAlign: "center"}}>

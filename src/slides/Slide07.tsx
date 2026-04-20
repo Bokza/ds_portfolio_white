@@ -335,140 +335,20 @@ export default function Slide07() {
               주요 역할 및 기술적 접근
             </h3>
           </div>
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
-          >
-            <div
-              style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{
-                  width: "24px",
-                  height: "24px",
-                  borderRadius: "6px",
-                  background: "rgba(239, 68, 68, 0.1)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: "0",
-                  marginTop: "2px",
-                }}
-              >
-                <i
-                  className="fa-solid fa-check"
-                  style={{ color: "#EF4444", fontSize: "12px" }}
-                ></i>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {[
+              { n: "01", content: <><strong>통계적 앙상블 탐지:</strong> <span className="highlight-blue">Hampel Filter</span>, <span className="highlight-red">IQR</span>, Sequence Detector를 결합해 오탐지 최소화</> },
+              { n: "02", content: <><strong>동적 임계치 설정:</strong> 센서 유형 및 평일/주말 패턴에 따라 유동적으로 변화하는 정상 범위(Dynamic Window) 적용</> },
+              { n: "03", content: <><strong>데이터 파이프라인:</strong> 7단계 전처리를 통해 노이즈 제거 및 데이터 품질 확보</> },
+              { n: "04", content: <><strong>확장성 있는 배포:</strong> BentoML 기반으로 50개 이상의 센서를 실시간 병렬 처리</> },
+            ].map(({ n, content }) => (
+              <div key={n} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                <div style={{ width: "24px", height: "24px", borderRadius: "6px", background: "rgba(59,130,246,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px" }}>
+                  <span style={{ color: "#3B82F6", fontSize: "12px", fontWeight: "800" }}>{n}</span>
+                </div>
+                <p style={{ fontSize: "16px", lineHeight: "1.6", color: "#475569" }}>{content}</p>
               </div>
-              <p
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "1.6",
-                  color: "#475569",
-                }}
-              >
-                <strong>통계적 앙상블 탐지:</strong>
-                <span className="highlight-blue">Hampel Filter</span>,
-                <span className="highlight-red">IQR</span>, Sequence Detector를
-                결합해 오탐지 최소화
-              </p>
-            </div>
-            <div
-              style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{
-                  width: "24px",
-                  height: "24px",
-                  borderRadius: "6px",
-                  background: "rgba(239, 68, 68, 0.1)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: "0",
-                  marginTop: "2px",
-                }}
-              >
-                <i
-                  className="fa-solid fa-check"
-                  style={{ color: "#EF4444", fontSize: "12px" }}
-                ></i>
-              </div>
-              <p
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "1.6",
-                  color: "#475569",
-                }}
-              >
-                <strong>동적 임계치 설정:</strong>
-                센서 유형 및 평일/주말 패턴에 따라 유동적으로 변화하는 정상
-                범위(Dynamic Window) 적용
-              </p>
-            </div>
-            <div
-              style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{
-                  width: "24px",
-                  height: "24px",
-                  borderRadius: "6px",
-                  background: "rgba(239, 68, 68, 0.1)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: "0",
-                  marginTop: "2px",
-                }}
-              >
-                <i
-                  className="fa-solid fa-check"
-                  style={{ color: "#EF4444", fontSize: "12px" }}
-                ></i>
-              </div>
-              <p
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "1.6",
-                  color: "#475569",
-                }}
-              >
-                <strong>데이터 파이프라인:</strong>
-                7단계 전처리를 통해 노이즈 제거 및 데이터 품질 확보
-              </p>
-            </div>
-            <div
-              style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}
-            >
-              <div
-                style={{
-                  width: "24px",
-                  height: "24px",
-                  borderRadius: "6px",
-                  background: "rgba(239, 68, 68, 0.1)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: "0",
-                  marginTop: "2px",
-                }}
-              >
-                <i
-                  className="fa-solid fa-check"
-                  style={{ color: "#EF4444", fontSize: "12px" }}
-                ></i>
-              </div>
-              <p
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "1.6",
-                  color: "#475569",
-                }}
-              >
-                <strong>확장성 있는 배포:</strong>
-                BentoML 기반으로 50개 이상의 센서를 실시간 병렬 처리
-              </p>
-            </div>
+            ))}
           </div>
         </div>
         <div

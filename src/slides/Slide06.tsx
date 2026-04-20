@@ -200,8 +200,7 @@ export default function Slide06() {
                     fontSize: "14px",
                     fontWeight: "700",
                     color: "#64748B",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
+                    letterSpacing: "0.15em",
                   }}
                 >
                   PROJECT 04
@@ -298,105 +297,21 @@ export default function Slide06() {
               주요 역할 및 성과
             </h3>
           </div>
-          <ul style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#334155",
-                paddingLeft: "24px",
-                position: "relative",
-              }}
-            >
-              <i
-                className="fa-solid fa-check"
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "5px",
-                  color: "#10B981",
-                  fontSize: "14px",
-                }}
-              ></i>
-              <strong style={{ color: "#0F172A" }}>RL 환경 설계:</strong>
-              상태(실내/외기온도), 행동(난방 설정온도 ±2°C),
-              보상(쾌적도+비용페널티) 정의
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#334155",
-                paddingLeft: "24px",
-                position: "relative",
-              }}
-            >
-              <i
-                className="fa-solid fa-check"
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "5px",
-                  color: "#10B981",
-                  fontSize: "14px",
-                }}
-              ></i>
-              <strong style={{ color: "#0F172A" }}>DQN 모델 구현:</strong>
-              PyTorch 기반 Q Network/Target Network 이중 구조 및 Replay Buffer
-              적용
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#334155",
-                paddingLeft: "24px",
-                position: "relative",
-              }}
-            >
-              <i
-                className="fa-solid fa-check"
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "5px",
-                  color: "#10B981",
-                  fontSize: "14px",
-                }}
-              ></i>
-              <strong style={{ color: "#0F172A" }}>
-                온라인 학습 파이프라인:
-              </strong>
-              Airflow 기반
-              <span style={{ color: "#2563EB", fontWeight: "700" }}>
-                15분 주기
-              </span>
-              데이터 수집-학습-추론 자동화
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#334155",
-                paddingLeft: "24px",
-                position: "relative",
-              }}
-            >
-              <i
-                className="fa-solid fa-check"
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "5px",
-                  color: "#10B981",
-                  fontSize: "14px",
-                }}
-              ></i>
-              <strong style={{ color: "#0F172A" }}>에너지 최적화:</strong>
-              외기온도 급감 시 선제적 난방 강화, 일사량 충분 시 설정온도
-              하향으로 과난방 방지
-            </li>
-          </ul>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {[
+              { n: "01", content: <><strong style={{ color: "#0F172A" }}>RL 환경 설계:</strong> 상태(실내/외기온도), 행동(난방 설정온도 ±2°C), 보상(쾌적도+비용페널티) 정의</> },
+              { n: "02", content: <><strong style={{ color: "#0F172A" }}>DQN 모델 구현:</strong> PyTorch 기반 Q Network/Target Network 이중 구조 및 Replay Buffer 적용</> },
+              { n: "03", content: <><strong style={{ color: "#0F172A" }}>온라인 학습 파이프라인:</strong> Airflow 기반 <span style={{ color: "#2563EB", fontWeight: "700" }}>15분 주기</span> 데이터 수집-학습-추론 자동화</> },
+              { n: "04", content: <><strong style={{ color: "#0F172A" }}>에너지 최적화:</strong> 외기온도 급감 시 선제적 난방 강화, 일사량 충분 시 설정온도 하향으로 과난방 방지</> },
+            ].map(({ n, content }) => (
+              <div key={n} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                <div style={{ width: "24px", height: "24px", borderRadius: "6px", background: "rgba(59,130,246,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px" }}>
+                  <span style={{ color: "#3B82F6", fontSize: "12px", fontWeight: "800" }}>{n}</span>
+                </div>
+                <p style={{ fontSize: "16px", lineHeight: "1.6", color: "#475569" }}>{content}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <div
           data-object="true"

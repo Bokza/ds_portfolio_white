@@ -233,8 +233,7 @@ export default function Slide04() {
                     fontSize: "14px",
                     fontWeight: "700",
                     color: "#64748B",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
+                    letterSpacing: "0.15em",
                   }}
                 >
                   PROJECT 02
@@ -366,140 +365,21 @@ export default function Slide04() {
               주요 역할 및 성과
             </h3>
           </div>
-          <ul style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#475569",
-                paddingLeft: "32px",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "4px",
-                  width: "18px",
-                  height: "18px",
-                  background: "rgba(59, 130, 246, 0.1)",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <i
-                  className="fa-solid fa-check"
-                  style={{ color: "#2563EB", fontSize: "10px" }}
-                ></i>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {[
+              { n: "01", content: <><strong style={{ color: "#0F172A" }}>XGBoost 듀얼 모델 아키텍처:</strong> <span className="highlight-blue">실사용량 예측</span> 및 <span className="highlight-green">낭비량 감지</span> 모델 분리 설계로 정확도 극대화</> },
+              { n: "02", content: <><strong style={{ color: "#0F172A" }}>Feature Engineering:</strong> 체감온도, 냉방도일(CDH), 시간 주기성(Sin/Cos) 등 도메인 특화 변수 적용</> },
+              { n: "03", content: <><strong style={{ color: "#0F172A" }}>MLOps 파이프라인 구축:</strong> 건물별 GridSearchCV 하이퍼파라미터 최적화 및 MLflow 기반 모델 버전 관리</> },
+              { n: "04", content: <><strong style={{ color: "#0F172A" }}>프로덕션 성과:</strong> 11개 건물 배포, 피크 요금 제어 지원으로 운영 비용 절감 기여</> },
+            ].map(({ n, content }) => (
+              <div key={n} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                <div style={{ width: "24px", height: "24px", borderRadius: "6px", background: "rgba(59,130,246,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px" }}>
+                  <span style={{ color: "#3B82F6", fontSize: "12px", fontWeight: "800" }}>{n}</span>
+                </div>
+                <p style={{ fontSize: "16px", lineHeight: "1.6", color: "#475569" }}>{content}</p>
               </div>
-              <strong style={{ color: "#0F172A" }}>
-                XGBoost 듀얼 모델 아키텍처:
-              </strong>
-              <span className="highlight-blue">실사용량 예측</span>및
-              <span className="highlight-green">낭비량 감지</span>
-              모델 분리 설계로 정확도 극대화
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#475569",
-                paddingLeft: "32px",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "4px",
-                  width: "18px",
-                  height: "18px",
-                  background: "rgba(59, 130, 246, 0.1)",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <i
-                  className="fa-solid fa-check"
-                  style={{ color: "#2563EB", fontSize: "10px" }}
-                ></i>
-              </div>
-              <strong style={{ color: "#0F172A" }}>Feature Engineering:</strong>
-              체감온도, 냉방도일(CDH), 시간 주기성(Sin/Cos) 등 도메인 특화 변수
-              적용
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#475569",
-                paddingLeft: "32px",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "4px",
-                  width: "18px",
-                  height: "18px",
-                  background: "rgba(59, 130, 246, 0.1)",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <i
-                  className="fa-solid fa-check"
-                  style={{ color: "#2563EB", fontSize: "10px" }}
-                ></i>
-              </div>
-              <strong style={{ color: "#0F172A" }}>
-                MLOps 파이프라인 구축:
-              </strong>
-              건물별 GridSearchCV 하이퍼파라미터 최적화 및 MLflow 기반 모델 버전
-              관리
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.5",
-                color: "#475569",
-                paddingLeft: "32px",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "4px",
-                  width: "18px",
-                  height: "18px",
-                  background: "rgba(59, 130, 246, 0.1)",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <i
-                  className="fa-solid fa-check"
-                  style={{ color: "#2563EB", fontSize: "10px" }}
-                ></i>
-              </div>
-              <strong style={{ color: "#0F172A" }}>프로덕션 성과:</strong>
-              11개 건물 배포, 피크 요금 제어 지원으로 운영 비용 절감 기여
-            </li>
-          </ul>
+            ))}
+          </div>
         </div>
         <div
           data-object="true"
