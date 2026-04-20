@@ -166,9 +166,6 @@ export default function Slide11() {
           All Certified
         </p>
       </div>
-      <p style={{fontSize: "16px", color: "#64748B", margin: "8px 0 0 0"}}>
-        데이터 분석 및 엔지니어링 역량 검증 타임라인
-      </p>
     </div>
     <div data-object="true" data-object-type="shape" style={{position: "absolute", left: "100px", top: "400px", width: "1080px", height: "4px", backgroundColor: "#E2E8F0", borderRadius: "2px"}}></div>
     <div data-object="true" data-object-type="shape" style={{position: "absolute", left: "100px", top: "400px", width: "1080px", height: "4px", backgroundColor: "#3B82F6", opacity: "0.3", borderRadius: "2px"}}></div>

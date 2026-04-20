@@ -22,7 +22,7 @@ export default function Slide12() {
     <div data-object="true" data-object-type="shape" style={{position: "absolute", left: "0", top: "620px", width: "1280px", height: "1px", zIndex: "2", backgroundColor: "#E2E8F0"}}></div>
     <div data-object="true" data-object-type="shape" style={{position: "absolute", left: "530px", top: "80px", width: "220px", height: "220px", zIndex: "5", border: "2px dashed #93C5FD", borderRadius: "50%"}}></div>
     <div data-object="true" data-object-type="image" style={{position: "absolute", left: "550px", top: "100px", width: "180px", height: "180px", zIndex: "6", borderRadius: "50%", border: "4px solid #FFFFFF", overflow: "hidden", boxShadow: "0 4px 20px rgba(148, 163, 184, 0.3)"}}>
-      <img src="./KakaoTalk_Photo_2025-12-25-13-29-53.jpeg" style={{width: "100%", height: "100%", objectFit: "cover"}} />
+      <img src="/KakaoTalk_Photo_2025-12-25-13-29-53.jpeg" style={{width: "100%", height: "100%", objectFit: "cover"}} />
     </div>
     <div data-object="true" data-object-type="textbox" style={{position: "absolute", left: "140px", top: "320px", width: "1000px", height: "160px", zIndex: "10", textAlign: "center"}}>
       <h1 style={{fontFamily: "'Noto Sans KR', sans-serif", fontSize: "3rem", fontWeight: "900", color: "#1E293B", margin: "0 0 16px 0", letterSpacing: "-0.025em"}}>
