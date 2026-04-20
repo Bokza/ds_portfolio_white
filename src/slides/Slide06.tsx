@@ -50,7 +50,17 @@ export default function Slide06() {
         animationEasing: "cubicOut" as const,
         animationDurationUpdate: 600,
         animationEasingUpdate: "cubicOut" as const,
-        grid: { top: 20, bottom: 25, left: 40, right: 20, containLabel: true },
+        grid: { top: 20, bottom: 25, left: 55, right: 20, containLabel: true },
+        tooltip: {
+          trigger: "axis",
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
+          borderColor: "#E2E8F0",
+          textStyle: { color: "#1E293B" },
+          formatter: (params: any) => {
+            const list = Array.isArray(params) ? params : [params];
+            return list.map((p: any) => `${p.marker}${p.seriesName}: ${Number(p.value).toFixed(2)}`).join("<br/>");
+          },
+        },
         xAxis: {
           type: "category",
           data: hours,
@@ -61,7 +71,9 @@ export default function Slide06() {
           {
             type: "value",
             name: "Temp (°C)",
-            nameTextStyle: { color: "#64748B" },
+            nameLocation: "middle",
+            nameGap: 40,
+            nameTextStyle: { color: "#64748B", fontSize: 11 },
             min: -10,
             max: 30,
             splitLine: { lineStyle: { color: "rgba(203, 213, 225, 0.5)" } },

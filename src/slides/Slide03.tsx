@@ -78,7 +78,7 @@ export default function Slide03() {
         animationEasing: "cubicOut" as const,
         animationDurationUpdate: 600,
         animationEasingUpdate: "cubicOut" as const,
-        grid: { top: 10, bottom: 20, left: 30, right: 10, containLabel: true },
+        grid: { top: 10, bottom: 20, left: 45, right: 15, containLabel: true },
         tooltip: {
           trigger: "axis",
           backgroundColor: "rgba(255, 255, 255, 0.95)",

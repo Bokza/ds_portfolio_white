@@ -15,3 +15,27 @@ body {
 }
 
 * { box-sizing: border-box; }
+
+/* ── Unified slide background ─────────────────────────── */
+.slide-container,
+#slide-container {
+  background-color: #FFFFFF !important;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important;
+}
+
+/* Hide CSS-class decorative orbs/blobs/grids */
+.glow-orb, .glow-blob,
+.glow-accent-1, .glow-accent-2, .glow-accent-3,
+.orb-blue, .orb-purple,
+.blob-emerald, .blob-gold, .blob-blue,
+.bg-grid, .bg-grid-pattern, .grid-pattern {
+  display: none !important;
+}
+
+/* Hide inline filter:blur decorations */
+[style*="blur("] {
+  display: none !important;
+}
