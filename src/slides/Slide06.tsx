@@ -31,7 +31,7 @@ export default function Slide06() {
         "rl-chart",
       ) as HTMLDivElement | null;
       if (!chartDom) return;
-      const myChart = echarts.init(chartDom);
+      const myChart = echarts.getInstanceByDom(chartDom) || echarts.init(chartDom);
 
       const hours = Array.from({ length: 24 }, (_, i) => `${i}h`);
       const outdoorTemp = [
@@ -121,11 +121,8 @@ export default function Slide06() {
     }
 
     return () => {
-      const nodes = Array.from(document.querySelectorAll("[id]"));
-      nodes.forEach((node) => {
-        const instance = echarts.getInstanceByDom(node as HTMLDivElement);
-        if (instance) instance.dispose();
-      });
+      const dom = document.getElementById("rl-chart");
+      if (dom) echarts.getInstanceByDom(dom)?.dispose();
     };
   }, []);
 

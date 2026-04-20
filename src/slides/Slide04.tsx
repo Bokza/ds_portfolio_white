@@ -32,7 +32,7 @@ export default function Slide04() {
         "energy-chart",
       ) as HTMLDivElement | null;
       if (!chartDom) return;
-      const myChart = echarts.init(chartDom);
+      const myChart = echarts.getInstanceByDom(chartDom) || echarts.init(chartDom);
 
       const timeData = [];
       const actualData = [];
@@ -137,11 +137,8 @@ export default function Slide04() {
 
     return () => {
       window.removeEventListener("resize", resizeHandler);
-      const nodes = Array.from(document.querySelectorAll("[id]"));
-      nodes.forEach((node) => {
-        const instance = echarts.getInstanceByDom(node as HTMLDivElement);
-        if (instance) instance.dispose();
-      });
+      const dom = document.getElementById("energy-chart");
+      if (dom) echarts.getInstanceByDom(dom)?.dispose();
     };
   }, []);
 

@@ -38,7 +38,7 @@ export default function Slide09() {
         "water-level-chart",
       ) as HTMLDivElement | null;
       if (!chartDom) return;
-      const myChart = echarts.init(chartDom);
+      const myChart = echarts.getInstanceByDom(chartDom) || echarts.init(chartDom);
 
       const hours = [];
       const rainfall = [];
@@ -180,11 +180,8 @@ export default function Slide09() {
 
     return () => {
       window.removeEventListener("resize", resizeHandler);
-      const nodes = Array.from(document.querySelectorAll("[id]"));
-      nodes.forEach((node) => {
-        const instance = echarts.getInstanceByDom(node as HTMLDivElement);
-        if (instance) instance.dispose();
-      });
+      const dom = document.getElementById("water-level-chart");
+      if (dom) echarts.getInstanceByDom(dom)?.dispose();
     };
   }, []);
 

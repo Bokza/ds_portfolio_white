@@ -38,7 +38,7 @@ export default function Slide07() {
         "anomaly-chart",
       ) as HTMLDivElement | null;
       if (!chartDom) return;
-      const myChart = echarts.init(chartDom);
+      const myChart = echarts.getInstanceByDom(chartDom) || echarts.init(chartDom);
       const dataCount = 50;
       const xData = [];
       const normalData = [];
@@ -143,11 +143,8 @@ export default function Slide07() {
 
     return () => {
       window.removeEventListener("resize", resizeHandler);
-      const nodes = Array.from(document.querySelectorAll("[id]"));
-      nodes.forEach((node) => {
-        const instance = echarts.getInstanceByDom(node as HTMLDivElement);
-        if (instance) instance.dispose();
-      });
+      const dom = document.getElementById("anomaly-chart");
+      if (dom) echarts.getInstanceByDom(dom)?.dispose();
     };
   }, []);
 

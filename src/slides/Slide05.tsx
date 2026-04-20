@@ -31,7 +31,7 @@ export default function Slide05() {
         "agent-chart",
       ) as HTMLDivElement | null;
       if (!chartDom) return;
-      const myChart = echarts.init(chartDom);
+      const myChart = echarts.getInstanceByDom(chartDom) || echarts.init(chartDom);
 
       const option = {
         backgroundColor: "transparent",
@@ -178,11 +178,8 @@ export default function Slide05() {
     }
 
     return () => {
-      const nodes = Array.from(document.querySelectorAll("[id]"));
-      nodes.forEach((node) => {
-        const instance = echarts.getInstanceByDom(node as HTMLDivElement);
-        if (instance) instance.dispose();
-      });
+      const dom = document.getElementById("agent-chart");
+      if (dom) echarts.getInstanceByDom(dom)?.dispose();
     };
   }, []);
 
