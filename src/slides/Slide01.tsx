@@ -86,7 +86,7 @@ export default function Slide01() {
       "main-chart",
     ) as HTMLDivElement | null;
     if (!chartDom) return;
-    const myChart = echarts.init(chartDom);
+    const myChart = echarts.getInstanceByDom(chartDom) || echarts.init(chartDom);
 
     const data1 = [];
     const data2 = [];
@@ -174,11 +174,7 @@ export default function Slide01() {
     myChart.setOption(option, { notMerge: true, lazyUpdate: false });
 
     return () => {
-      const nodes = Array.from(document.querySelectorAll("[id]"));
-      nodes.forEach((node) => {
-        const instance = echarts.getInstanceByDom(node as HTMLDivElement);
-        if (instance) instance.dispose();
-      });
+      myChart.dispose();
     };
   }, []);
 
