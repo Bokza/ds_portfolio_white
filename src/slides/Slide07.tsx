@@ -156,36 +156,6 @@ export default function Slide07() {
       <div className="slide-container">
         <div
           data-object="true"
-          data-object-type="shape"
-          style={{
-            position: "absolute",
-            left: "750px",
-            top: "-100px",
-            width: "600px",
-            height: "600px",
-            background:
-              "radial-gradient(circle, rgba(239, 68, 68, 0.04) 0%, rgba(239, 68, 68, 0) 70%)",
-            borderRadius: "50%",
-            zIndex: "1",
-          }}
-        ></div>
-        <div
-          data-object="true"
-          data-object-type="shape"
-          style={{
-            position: "absolute",
-            left: "-150px",
-            top: "400px",
-            width: "600px",
-            height: "600px",
-            background:
-              "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(59, 130, 246, 0) 70%)",
-            borderRadius: "50%",
-            zIndex: "1",
-          }}
-        ></div>
-        <div
-          data-object="true"
           data-object-type="textbox"
           style={{
             position: "absolute",

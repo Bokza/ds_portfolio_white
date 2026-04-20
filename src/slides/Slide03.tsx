@@ -163,51 +163,6 @@ export default function Slide03() {
       <div className="slide-container">
         <div
           data-object="true"
-          data-object-type="shape"
-          style={{
-            position: "absolute",
-            left: "-100px",
-            top: "-100px",
-            width: "500px",
-            height: "500px",
-            background:
-              "radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0) 70%)",
-            borderRadius: "50%",
-            zIndex: "1",
-          }}
-        ></div>
-        <div
-          data-object="true"
-          data-object-type="shape"
-          style={{
-            position: "absolute",
-            left: "800px",
-            top: "400px",
-            width: "600px",
-            height: "600px",
-            background:
-              "radial-gradient(circle, rgba(16, 185, 129, 0.04) 0%, rgba(16, 185, 129, 0) 70%)",
-            borderRadius: "50%",
-            zIndex: "1",
-          }}
-        ></div>
-        <div
-          data-object="true"
-          data-object-type="shape"
-          style={{
-            position: "absolute",
-            left: "1050px",
-            top: "-50px",
-            width: "300px",
-            height: "300px",
-            background:
-              "radial-gradient(circle, rgba(139, 92, 246, 0.04) 0%, rgba(139, 92, 246, 0) 70%)",
-            borderRadius: "50%",
-            zIndex: "1",
-          }}
-        ></div>
-        <div
-          data-object="true"
           data-object-type="textbox"
           style={{
             position: "absolute",
