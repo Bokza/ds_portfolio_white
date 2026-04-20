@@ -20,7 +20,7 @@ const slideCss = `
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            padding: 40px 60px;
+            padding: 28px 50px;
             box-sizing: border-box;
         }
 
@@ -71,9 +71,9 @@ const slideCss = `
         }
 
         .header {
-            margin-bottom: 24px;
+            margin-bottom: 14px;
             border-bottom: 1px solid #E2E8F0;
-            padding-bottom: 1rem;
+            padding-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
@@ -95,7 +95,7 @@ const slideCss = `
 
         .main-content {
             display: flex;
-            gap: 40px;
+            gap: 28px;
             flex: 1;
         }
 
@@ -103,25 +103,25 @@ const slideCss = `
             flex: 0 0 42%;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 12px;
         }
 
         .tech-category {
             background-color: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 12px;
-            padding: 24px;
+            padding: 14px 18px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             flex: 1;
         }
 
         .category-title {
-            font-size: 0.95rem;
+            font-size: 0.875rem;
             color: #2563EB;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -130,41 +130,41 @@ const slideCss = `
         .tag-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 7px;
         }
 
         .tech-tag {
             background-color: #F8FAFC;
             border: 1px solid #E2E8F0;
             color: #334155;
-            padding: 8px 14px;
+            padding: 5px 10px;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .metrics-column {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 12px;
         }
 
         .hero-metrics {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            height: 200px;
+            gap: 12px;
+            height: 175px;
         }
 
         .hero-card {
             background-color: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 16px;
-            padding: 24px;
+            padding: 16px 20px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -174,21 +174,21 @@ const slideCss = `
         }
 
         .hero-value {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 900;
             line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .hero-label {
-            font-size: 1.1rem;
-            color: #0F172A;
-            font-weight: 700;
             margin-bottom: 6px;
         }
 
+        .hero-label {
+            font-size: 1rem;
+            color: #0F172A;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
         .hero-sub {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #64748B;
             margin-top: 2px;
             line-height: 1.4;
@@ -197,7 +197,7 @@ const slideCss = `
         .grid-metrics {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 12px;
             flex: 1;
         }
 
@@ -206,7 +206,7 @@ const slideCss = `
             border: 1px solid #E2E8F0;
             border-top: 4px solid #94A3B8;
             border-radius: 12px;
-            padding: 24px;
+            padding: 16px 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -219,8 +219,8 @@ const slideCss = `
         .metric-item.accent-orange { border-top-color: #F97316; }
 
         .m-icon {
-            font-size: 1.75rem;
-            margin-bottom: 12px;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
         }
 
         .m-value {

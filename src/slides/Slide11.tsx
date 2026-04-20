@@ -207,9 +207,6 @@ export default function Slide11() {
       <p className="cert-org">
         대한상공회의소
       </p>
-      <p className="cert-tag accent-blue-tag">
-        Database & Spreadsheet
-      </p>
     </div>
     <div className="cert-card" data-object="true" data-object-type="textbox" style={{position: "absolute", left: "383px", top: "475px"}}>
       <div className="cert-icon accent-emerald-icon">
@@ -220,9 +217,6 @@ export default function Slide11() {
       </p>
       <p className="cert-org" style={{fontSize: "0.75rem"}}>
         (ADsP) 한국데이터산업진흥원
-      </p>
-      <p className="cert-tag accent-emerald-tag">
-        Data Analysis Basics
       </p>
     </div>
     <div className="cert-card" data-object="true" data-object-type="textbox" style={{position: "absolute", left: "639px", top: "140px"}}>
@@ -235,9 +229,6 @@ export default function Slide11() {
       <p className="cert-org">
         한국산업인력공단
       </p>
-      <p className="cert-tag accent-purple-tag">
-        Statistical Survey
-      </p>
     </div>
     <div className="cert-card" data-object="true" data-object-type="textbox" style={{position: "absolute", left: "895px", top: "475px"}}>
       <div className="cert-icon accent-amber-icon">
@@ -248,9 +239,6 @@ export default function Slide11() {
       </p>
       <p className="cert-org">
         한국데이터산업진흥원
-      </p>
-      <p className="cert-tag accent-amber-tag">
-        Data Engineering
       </p>
     </div>
   </div>
