@@ -32,6 +32,7 @@ const slideCss = `
 
 export default function Slide07() {
   useEffect(() => {
+    let resizeHandler = () => {};
     {
       const chartDom = document.getElementById(
         "anomaly-chart",
@@ -136,12 +137,12 @@ export default function Slide07() {
       myChart.clear();
       myChart.setOption(option, { notMerge: true, lazyUpdate: false });
 
-      window.addEventListener("resize", function () {
-        myChart.resize();
-      });
+      resizeHandler = () => myChart.resize();
+      window.addEventListener("resize", resizeHandler);
     }
 
     return () => {
+      window.removeEventListener("resize", resizeHandler);
       const nodes = Array.from(document.querySelectorAll("[id]"));
       nodes.forEach((node) => {
         const instance = echarts.getInstanceByDom(node as HTMLDivElement);

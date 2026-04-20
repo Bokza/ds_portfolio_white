@@ -32,6 +32,7 @@ const slideCss = `
 
 export default function Slide09() {
   useEffect(() => {
+    let resizeHandler = () => {};
     {
       const chartDom = document.getElementById(
         "water-level-chart",
@@ -173,12 +174,12 @@ export default function Slide09() {
       };
       myChart.clear();
       myChart.setOption(option, { notMerge: true, lazyUpdate: false });
-      window.addEventListener("resize", function () {
-        myChart.resize();
-      });
+      resizeHandler = () => myChart.resize();
+      window.addEventListener("resize", resizeHandler);
     }
 
     return () => {
+      window.removeEventListener("resize", resizeHandler);
       const nodes = Array.from(document.querySelectorAll("[id]"));
       nodes.forEach((node) => {
         const instance = echarts.getInstanceByDom(node as HTMLDivElement);
