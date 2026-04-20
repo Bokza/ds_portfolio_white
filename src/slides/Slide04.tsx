@@ -201,9 +201,9 @@ export default function Slide04() {
           data-object-type="textbox"
           style={{
             position: "absolute",
-            left: "50px",
-            top: "30px",
-            width: "1180px",
+            left: "60px",
+            top: "40px",
+            width: "1160px",
             height: "100px",
             zIndex: "10",
           }}
@@ -218,21 +218,22 @@ export default function Slide04() {
               }}
             >
               <div
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                style={{ display: "flex", alignItems: "center", gap: "12px" }}
               >
                 <span
                   style={{
-                    width: "24px",
-                    height: "2px",
-                    backgroundColor: "#2563EB",
+                    width: "8px",
+                    height: "8px",
+                    backgroundColor: "#3B82F6",
+                    borderRadius: "50%",
                   }}
                 ></span>
                 <span
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "800",
-                    color: "#2563EB",
-                    letterSpacing: "0.15em",
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    color: "#64748B",
+                    letterSpacing: "0.1em",
                     textTransform: "uppercase",
                   }}
                 >
@@ -291,8 +292,8 @@ export default function Slide04() {
           data-object-type="textbox"
           style={{
             position: "absolute",
-            left: "50px",
-            top: "145px",
+            left: "60px",
+            top: "155px",
             width: "550px",
             height: "120px",
             zIndex: "10",
@@ -306,21 +307,13 @@ export default function Slide04() {
               marginBottom: "12px",
             }}
           >
-            <div
-              style={{
-                width: "4px",
-                height: "20px",
-                background: "linear-gradient(180deg, #10B981, #059669)",
-                borderRadius: "2px",
-              }}
-            ></div>
+            <i className="fa-solid fa-bullseye" style={{ color: "#3B82F6", fontSize: "18px" }}></i>
             <h3
               style={{
                 fontSize: "20px",
                 fontWeight: "700",
-                color: "#1E293B",
+                color: "#0F172A",
                 margin: "0",
-                letterSpacing: "-0.01em",
               }}
             >
               프로젝트 개요
@@ -346,8 +339,8 @@ export default function Slide04() {
           data-object-type="textbox"
           style={{
             position: "absolute",
-            left: "50px",
-            top: "290px",
+            left: "60px",
+            top: "300px",
             width: "550px",
             height: "310px",
             zIndex: "10",
@@ -361,21 +354,13 @@ export default function Slide04() {
               marginBottom: "16px",
             }}
           >
-            <div
-              style={{
-                width: "4px",
-                height: "20px",
-                background: "linear-gradient(180deg, #3B82F6, #2563EB)",
-                borderRadius: "2px",
-              }}
-            ></div>
+            <i className="fa-solid fa-layer-group" style={{ color: "#10B981", fontSize: "18px" }}></i>
             <h3
               style={{
                 fontSize: "20px",
                 fontWeight: "700",
-                color: "#1E293B",
+                color: "#0F172A",
                 margin: "0",
-                letterSpacing: "-0.01em",
               }}
             >
               주요 역할 및 성과
@@ -521,8 +506,8 @@ export default function Slide04() {
           data-object-type="textbox"
           style={{
             position: "absolute",
-            left: "50px",
-            top: "615px",
+            left: "60px",
+            top: "620px",
             width: "550px",
             height: "90px",
             zIndex: "10",
@@ -624,7 +609,7 @@ export default function Slide04() {
           style={{
             position: "absolute",
             left: "650px",
-            top: "145px",
+            top: "155px",
             width: "580px",
             height: "125px",
             zIndex: "10",

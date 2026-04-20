@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { slides } from "./data/slides";
 
 export default function SlidePage() {
@@ -36,6 +36,15 @@ export default function SlidePage() {
     setDirection(targetIndex > currentIndex ? 1 : -1);
     navigate(`/slide/${slides[targetIndex].id}`);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentIndex]);
 
   const NavBtn = ({
     onClick,

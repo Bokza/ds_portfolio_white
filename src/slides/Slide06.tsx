@@ -193,17 +193,20 @@ export default function Slide06() {
                 marginBottom: "8px",
               }}
             >
-              <span
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "700",
-                  color: "#EF4444",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                }}
-              >
-                PROJECT 04
-              </span>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <span style={{ width: "8px", height: "8px", backgroundColor: "#EF4444", borderRadius: "50%" }}></span>
+                <span
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "700",
+                    color: "#64748B",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  PROJECT 04
+                </span>
+              </div>
               <span
                 style={{
                   backgroundColor: "rgba(139, 92, 246, 0.1)",
@@ -256,21 +259,9 @@ export default function Slide06() {
             zIndex: "10",
           }}
         >
-          <div
-            style={{
-              borderLeft: "4px solid #10B981",
-              paddingLeft: "15px",
-              marginBottom: "12px",
-            }}
-          >
-            <h3
-              style={{
-                fontSize: "20px",
-                fontWeight: "700",
-                color: "#1E293B",
-                margin: "0",
-              }}
-            >
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
+            <i className="fa-solid fa-bullseye" style={{ color: "#3B82F6", fontSize: "18px" }}></i>
+            <h3 style={{ fontSize: "20px", fontWeight: "700", color: "#0F172A", margin: "0" }}>
               프로젝트 개요
             </h3>
           </div>
@@ -301,21 +292,9 @@ export default function Slide06() {
             zIndex: "10",
           }}
         >
-          <div
-            style={{
-              borderLeft: "4px solid #10B981",
-              paddingLeft: "15px",
-              marginBottom: "15px",
-            }}
-          >
-            <h3
-              style={{
-                fontSize: "20px",
-                fontWeight: "700",
-                color: "#1E293B",
-                margin: "0",
-              }}
-            >
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "15px" }}>
+            <i className="fa-solid fa-layer-group" style={{ color: "#10B981", fontSize: "18px" }}></i>
+            <h3 style={{ fontSize: "20px", fontWeight: "700", color: "#0F172A", margin: "0" }}>
               주요 역할 및 성과
             </h3>
           </div>

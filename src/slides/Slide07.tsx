@@ -269,7 +269,7 @@ export default function Slide07() {
           >
             <i
               className="fa-solid fa-bullseye"
-              style={{ color: "#EF4444", fontSize: "18px" }}
+              style={{ color: "#3B82F6", fontSize: "18px" }}
             ></i>
             <h3
               style={{
@@ -322,7 +322,7 @@ export default function Slide07() {
           >
             <i
               className="fa-solid fa-layer-group"
-              style={{ color: "#3B82F6", fontSize: "18px" }}
+              style={{ color: "#10B981", fontSize: "18px" }}
             ></i>
             <h3
               style={{
