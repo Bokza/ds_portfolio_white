@@ -277,14 +277,21 @@ export default function Slide02() {
           5
         </div>
       </div>
-      <div className="stat-card">
-        <div className="stat-label">
-          Status
-        </div>
-        <div className="stat-value highlight">
-          Production
-        </div>
-      </div>
+      <span
+        style={{
+          background: "#ECFDF5",
+          border: "1px solid #A7F3D0",
+          color: "#059669",
+          fontSize: "13px",
+          fontWeight: "700",
+          padding: "4px 14px",
+          borderRadius: "20px",
+          letterSpacing: "0.05em",
+          alignSelf: "center",
+        }}
+      >
+        PRODUCTION
+      </span>
     </div>
     <div data-object="true" data-object-type="shape" style={{position: "absolute", left: "60px", top: "190px", width: "1160px", height: "1px", background: "linear-gradient(90deg, rgba(148, 163, 184, 0.4), transparent)", zIndex: "10"}}></div>
     <div className="project-card color-blue" data-object="true" data-object-type="textbox" style={{position: "absolute", left: "60px", top: "220px", width: "370px", height: "235px"}}>

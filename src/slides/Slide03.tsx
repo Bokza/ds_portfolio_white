@@ -84,6 +84,10 @@ export default function Slide03() {
           backgroundColor: "rgba(255, 255, 255, 0.95)",
           borderColor: "#E2E8F0",
           textStyle: { color: "#1E293B" },
+          formatter: (params: any) => {
+            const list = Array.isArray(params) ? params : [params];
+            return list.map((p: any) => `${p.marker}${p.seriesName}: ${Number(p.value).toFixed(2)}`).join("<br/>");
+          },
         },
         xAxis: {
           type: "category",

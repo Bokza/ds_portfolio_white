@@ -500,23 +500,6 @@ export default function Slide06() {
               <i className="fas fa-database"></i>
               PostgreSQL
             </span>
-            <span
-              style={{
-                background: "#F8FAFC",
-                border: "1px solid #E2E8F0",
-                color: "#3B82F6",
-                padding: "6px 14px",
-                borderRadius: "20px",
-                fontSize: "14px",
-                fontWeight: "500",
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-              }}
-            >
-              <i className="fas fa-server"></i>
-              FastAPI
-            </span>
           </div>
         </div>
         <div

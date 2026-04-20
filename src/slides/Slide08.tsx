@@ -272,7 +272,7 @@ export default function Slide08() {
                   Work Experience
                 </p>
                 <p className="text-blue-900 text-2xl font-black">
-                  2+ Years
+                  2+ years
                 </p>
               </div>
             </div>

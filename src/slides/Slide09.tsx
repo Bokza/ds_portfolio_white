@@ -88,6 +88,10 @@ export default function Slide09() {
           borderColor: "#E2E8F0",
           textStyle: { color: "#1E293B" },
           axisPointer: { type: "cross", label: { backgroundColor: "#64748B" } },
+          formatter: (params: any) => {
+            const list = Array.isArray(params) ? params : [params];
+            return list.map((p: any) => `${p.marker}${p.seriesName}: ${Number(p.value).toFixed(2)}`).join("<br/>");
+          },
         },
         xAxis: {
           type: "category",

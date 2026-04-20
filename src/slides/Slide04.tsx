@@ -74,6 +74,10 @@ export default function Slide04() {
             type: "line",
             lineStyle: { color: "#CBD5E1", type: "dashed" },
           },
+          formatter: (params: any) => {
+            const list = Array.isArray(params) ? params : [params];
+            return list.map((p: any) => `${p.marker}${p.seriesName}: ${Number(p.value).toFixed(2)}`).join("<br/>");
+          },
         },
         xAxis: {
           type: "category",
@@ -237,8 +241,8 @@ export default function Slide04() {
               </div>
               <span
                 style={{
-                  background: "rgba(16, 185, 129, 0.1)",
-                  border: "1px solid rgba(16, 185, 129, 0.3)",
+                  background: "#ECFDF5",
+                  border: "1px solid #A7F3D0",
                   color: "#059669",
                   fontSize: "13px",
                   fontWeight: "700",
@@ -247,15 +251,7 @@ export default function Slide04() {
                   letterSpacing: "0.05em",
                 }}
               >
-                <i
-                  className="fas fa-circle"
-                  style={{
-                    fontSize: "8px",
-                    marginRight: "6px",
-                    verticalAlign: "middle",
-                  }}
-                ></i>
-                Production
+                PRODUCTION
               </span>
             </div>
             <div
@@ -619,24 +615,6 @@ export default function Slide04() {
             >
               <i className="fas fa-box-open" style={{ color: "#2563EB" }}></i>
               BentoML
-            </span>
-            <span
-              style={{
-                background: "#FFFFFF",
-                border: "1px solid #E2E8F0",
-                color: "#334155",
-                padding: "6px 14px",
-                borderRadius: "24px",
-                fontSize: "14px",
-                fontWeight: "600",
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
-              }}
-            >
-              <i className="fas fa-database" style={{ color: "#2563EB" }}></i>
-              PostgreSQL
             </span>
           </div>
         </div>
