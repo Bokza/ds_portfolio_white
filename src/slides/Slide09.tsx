@@ -226,7 +226,7 @@ export default function Slide09() {
                   style={{
                     width: "8px",
                     height: "8px",
-                    backgroundColor: "#3B82F6",
+                    backgroundColor: "#94A3B8",
                     borderRadius: "50%",
                   }}
                 ></span>
@@ -238,7 +238,7 @@ export default function Slide09() {
                     letterSpacing: "0.15em",
                   }}
                 >
-                  PROJECT 05
+                  PROJECT 06
                 </span>
               </div>
               <span

@@ -224,7 +224,7 @@ export default function Slide04() {
                   style={{
                     width: "8px",
                     height: "8px",
-                    backgroundColor: "#3B82F6",
+                    backgroundColor: "#94A3B8",
                     borderRadius: "50%",
                   }}
                 ></span>
@@ -251,7 +251,7 @@ export default function Slide04() {
                   letterSpacing: "0.05em",
                 }}
               >
-                PRODUCTION
+                Time Series Forecasting
               </span>
             </div>
             <div

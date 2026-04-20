@@ -194,7 +194,7 @@ export default function Slide06() {
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <span style={{ width: "8px", height: "8px", backgroundColor: "#EF4444", borderRadius: "50%" }}></span>
+                <span style={{ width: "8px", height: "8px", backgroundColor: "#94A3B8", borderRadius: "50%" }}></span>
                 <span
                   style={{
                     fontSize: "14px",

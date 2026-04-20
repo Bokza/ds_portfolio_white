@@ -196,7 +196,7 @@ export default function Slide03() {
                   style={{
                     width: "8px",
                     height: "8px",
-                    backgroundColor: "#3B82F6",
+                    backgroundColor: "#94A3B8",
                     borderRadius: "50%",
                   }}
                 ></span>
@@ -223,7 +223,7 @@ export default function Slide03() {
                   letterSpacing: "0.05em",
                 }}
               >
-                PRODUCTION
+                Classification
               </span>
             </div>
             <div

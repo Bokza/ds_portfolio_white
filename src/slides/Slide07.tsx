@@ -189,7 +189,7 @@ export default function Slide07() {
                   style={{
                     width: "8px",
                     height: "8px",
-                    backgroundColor: "#EF4444",
+                    backgroundColor: "#94A3B8",
                     borderRadius: "50%",
                   }}
                 ></span>
@@ -216,7 +216,7 @@ export default function Slide07() {
                   letterSpacing: "0.05em",
                 }}
               >
-                MONITORING
+                Monitoring
               </span>
             </div>
             <div

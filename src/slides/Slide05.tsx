@@ -244,7 +244,7 @@ export default function Slide05() {
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={{ width: "8px", height: "8px", backgroundColor: "#3B82F6", borderRadius: "50%" }}></span>
+                <span style={{ width: "8px", height: "8px", backgroundColor: "#94A3B8", borderRadius: "50%" }}></span>
                 <span
                   style={{
                     fontSize: "14px",
@@ -399,109 +399,21 @@ export default function Slide05() {
               주요 역할 및 성과
             </h3>
           </div>
-          <ul
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "16px",
-              paddingLeft: "14px",
-            }}
-          >
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.6",
-                color: "#475569",
-                paddingLeft: "28px",
-                position: "relative",
-              }}
-            >
-              <i
-                className="fa-solid fa-check"
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "4px",
-                  color: "#8B5CF6",
-                  fontSize: "16px",
-                }}
-              ></i>
-              <strong style={{ color: "#1E293B" }}>LangGraph 아키텍처:</strong>
-              상태(State) 기반 멀티턴 대화 제어 및 에이전트 루프 설계로 문맥
-              유지 능력 강화
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.6",
-                color: "#475569",
-                paddingLeft: "28px",
-                position: "relative",
-              }}
-            >
-              <i
-                className="fa-solid fa-check"
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "4px",
-                  color: "#8B5CF6",
-                  fontSize: "16px",
-                }}
-              ></i>
-              <strong style={{ color: "#1E293B" }}>
-                Multi-Tool Orchestration:
-              </strong>
-              <span style={{ color: "#4F46E5", fontWeight: "600" }}>
-                SQL Toolkit
-              </span>
-              (DB), 예측 모델 API, 매뉴얼 검색(RAG)의 유기적 결합
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.6",
-                color: "#475569",
-                paddingLeft: "28px",
-                position: "relative",
-              }}
-            >
-              <i
-                className="fa-solid fa-check"
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "4px",
-                  color: "#8B5CF6",
-                  fontSize: "16px",
-                }}
-              ></i>
-              <strong style={{ color: "#1E293B" }}>System Prompt:</strong>
-              도메인 특화 쿼리 생성 규칙 및 할루시네이션 방지 로직 구현
-            </li>
-            <li
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.6",
-                color: "#475569",
-                paddingLeft: "28px",
-                position: "relative",
-              }}
-            >
-              <i
-                className="fa-solid fa-check"
-                style={{
-                  position: "absolute",
-                  left: "0",
-                  top: "4px",
-                  color: "#8B5CF6",
-                  fontSize: "16px",
-                }}
-              ></i>
-              <strong style={{ color: "#1E293B" }}>Data Accessibility:</strong>
-              자연어 질의로 즉시 데이터 접근 환경 구축
-            </li>
-          </ul>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            {[
+              { n: "01", content: <><strong style={{ color: "#1E293B" }}>LangGraph 아키텍처:</strong> 상태(State) 기반 멀티턴 대화 제어 및 에이전트 루프 설계로 문맥 유지 능력 강화</> },
+              { n: "02", content: <><strong style={{ color: "#1E293B" }}>Multi-Tool Orchestration:</strong> <span style={{ color: "#4F46E5", fontWeight: "600" }}>SQL Toolkit</span>(DB), 예측 모델 API, 매뉴얼 검색(RAG)의 유기적 결합</> },
+              { n: "03", content: <><strong style={{ color: "#1E293B" }}>System Prompt:</strong> 도메인 특화 쿼리 생성 규칙 및 할루시네이션 방지 로직 구현</> },
+              { n: "04", content: <><strong style={{ color: "#1E293B" }}>Data Accessibility:</strong> 자연어 질의로 즉시 데이터 접근 환경 구축</> },
+            ].map(({ n, content }) => (
+              <div key={n} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                <div style={{ width: "24px", height: "24px", borderRadius: "6px", background: "rgba(59,130,246,0.1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "2px" }}>
+                  <span style={{ color: "#3B82F6", fontSize: "12px", fontWeight: "800" }}>{n}</span>
+                </div>
+                <p style={{ fontSize: "16px", lineHeight: "1.6", color: "#475569" }}>{content}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <div
           data-object="true"
