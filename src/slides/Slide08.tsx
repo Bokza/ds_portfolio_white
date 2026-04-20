@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import * as echarts from "echarts";
 import SlideFrame from "../components/SlideFrame";
 
 const slideCss = `
@@ -250,53 +248,6 @@ const slideCss = `
     `;
 
 export default function Slide08() {
-  useEffect(() => {
-    const chartDom = document.getElementById(
-      "chart-accuracy",
-    ) as HTMLDivElement | null;
-    if (!chartDom) return;
-    const myChart = echarts.init(chartDom);
-    const option = {
-      animation: true,
-      animationDuration: 900,
-      animationEasing: "cubicOut" as const,
-      animationDurationUpdate: 600,
-      animationEasingUpdate: "cubicOut" as const,
-      grid: { top: 40, bottom: 0, left: 10, right: 10 },
-      xAxis: {
-        show: false,
-        type: "category",
-        data: ["1", "2", "3", "4", "5", "6"],
-      },
-      yAxis: { show: false, min: 0 },
-      series: [
-        {
-          data: [1, 2.5, 2, 4, 3.5, 6],
-          type: "line",
-          smooth: true,
-          showSymbol: false,
-          lineStyle: { color: "#10B981", width: 4 },
-          areaStyle: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: "rgba(16, 185, 129, 0.4)" },
-              { offset: 1, color: "rgba(16, 185, 129, 0)" },
-            ]),
-          },
-        },
-      ],
-    };
-    myChart.clear();
-    myChart.setOption(option, { notMerge: true, lazyUpdate: false });
-
-    return () => {
-      const nodes = Array.from(document.querySelectorAll("[id]"));
-      nodes.forEach((node) => {
-        const instance = echarts.getInstanceByDom(node as HTMLDivElement);
-        if (instance) instance.dispose();
-      });
-    };
-  }, []);
-
   return (
     <SlideFrame>
       <style>{slideCss}</style>
@@ -318,10 +269,10 @@ export default function Slide08() {
             <div className="text-right">
               <div className="bg-blue-50 border border-blue-200 px-6 py-3 rounded-xl shadow-sm">
                 <p className="text-blue-500 text-xs font-bold uppercase tracking-wider mb-1">
-                  System Reliability
+                  Work Experience
                 </p>
                 <p className="text-blue-900 text-2xl font-black">
-                  99.9% Uptime
+                  2+ Years
                 </p>
               </div>
             </div>
@@ -442,13 +393,6 @@ export default function Slide08() {
                     <i className="fas fa-rocket text-4xl text-green-100"></i>
                   </div>
                   <p className="hero-label">프로덕션 배포 경험</p>
-                  <p className="hero-sub">
-                    재실/에너지/이상탐지/LLM/HVAC/수위예측
-                  </p>
-                  <div
-                    className="chart-mini-container"
-                    id="chart-accuracy"
-                  ></div>
                 </div>
                 <div className="hero-card border-t-4 border-t-yellow-500">
                   <div className="flex justify-between items-start mb-2">
@@ -461,9 +405,6 @@ export default function Slide08() {
                     <i className="fas fa-trophy text-4xl text-yellow-100"></i>
                   </div>
                   <p className="hero-label">데이터 분석 대회 수상</p>
-                  <p className="hero-sub">
-                    1위 2회 (구독갱신, 기업성공예측) 포함
-                  </p>
                 </div>
               </div>
               <div className="grid-metrics">
